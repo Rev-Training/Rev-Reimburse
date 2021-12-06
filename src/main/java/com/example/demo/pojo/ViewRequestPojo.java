@@ -9,6 +9,7 @@ public class ViewRequestPojo {
     private double cost ;
     private String purchaseDate ;
     private String requestDate ;
+    private String status ;
 
     public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, String requestDate, String status, String receiptPic) {
         super();
@@ -23,7 +24,6 @@ public class ViewRequestPojo {
         this.receiptPic = receiptPic;
     }
 
-    private String status ;
 
     public int getReqID() {
         return reqID;
