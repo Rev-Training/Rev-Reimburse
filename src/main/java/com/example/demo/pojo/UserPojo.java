@@ -15,6 +15,7 @@ public class UserPojo {
     public UserPojo(int userID, String username, String userPassword, String firstName,
                     String lastName, String dateCreated, String userEmail,
                     String userType, String userAddress, String profilePic) {
+        super();
         this.userID = userID;
         this.username = username;
         this.userPassword = userPassword;
