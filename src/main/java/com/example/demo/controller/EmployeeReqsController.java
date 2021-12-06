@@ -10,14 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
-@RestController
-@RequestMapping("api") // optional
-public class TestController {
+public class EmployeeReqsController {
 
-    @PostMapping("login")
-    String ox() {
-        return "I'm Working Yo!";
-    }
 }

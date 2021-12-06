@@ -10,12 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("api") // optional
-public class AppController {
-    @PostMapping("ox")
-    String ox() {
-        return "I'm Working Ox!";
-    }
+
+public class ManagerReqsController {
 
 }
