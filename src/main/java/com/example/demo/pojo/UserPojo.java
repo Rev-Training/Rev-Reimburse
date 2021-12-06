@@ -11,6 +11,8 @@ public class UserPojo {
     private String userEmail;
     private String userType;
     private String userAddress;
+    private String profilePic;
+
 
     public UserPojo(int userID, String username, String userPassword, String firstName,
                     String lastName, String dateCreated, String userEmail,
@@ -28,7 +30,6 @@ public class UserPojo {
         this.profilePic = profilePic;
     }
 
-    private String profilePic;
 
 
     public int getUserID() {
