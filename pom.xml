@@ -37,6 +37,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -54,37 +58,37 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.2.0</version>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<!-- here the phase you need -->
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/target/classes</outputDirectory>
-							<resources>
-								<resource>
-									<directory>client/dist</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<artifactId>maven-resources-plugin</artifactId>-->
+<!--				<version>3.2.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>copy-resources</id>-->
+<!--						&lt;!&ndash; here the phase you need &ndash;&gt;-->
+<!--						<phase>validate</phase>-->
+<!--						<goals>-->
+<!--							<goal>copy-resources</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<outputDirectory>${basedir}/target/classes</outputDirectory>-->
+<!--							<resources>-->
+<!--								<resource>-->
+<!--									<directory>client/dist</directory>-->
+<!--									<filtering>true</filtering>-->
+<!--								</resource>-->
+<!--							</resources>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 
 
 		</plugins>
 
 		<resources>
-			<resource>
-				<directory>client/dist</directory>
-			</resource>
+<!--			<resource>-->
+<!--				<directory>client/dist</directory>-->
+<!--			</resource>-->
 		</resources>
 
 	</build>
