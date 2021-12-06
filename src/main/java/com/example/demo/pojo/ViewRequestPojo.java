@@ -11,6 +11,10 @@ public class ViewRequestPojo {
     private String requestDate ;
     private String status ;
 
+
+    private String receiptPic;
+
+
     public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, String requestDate, String status, String receiptPic) {
         super();
         this.reqID = reqID;
@@ -97,7 +101,20 @@ public class ViewRequestPojo {
         this.receiptPic = receiptPic;
     }
 
-    private String receiptPic;
+    @Override
+    public String toString() {
+        return "ViewRequestPojo{" +
+                "reqID=" + reqID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", description='" + description + '\'' +
+                ", cost=" + cost +
+                ", purchaseDate='" + purchaseDate + '\'' +
+                ", requestDate='" + requestDate + '\'' +
+                ", status='" + status + '\'' +
+                ", receiptPic='" + receiptPic + '\'' +
+                '}';
+    }
 
 
 }

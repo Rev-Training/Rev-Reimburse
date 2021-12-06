@@ -112,4 +112,20 @@ public class UserPojo {
         this.profilePic = profilePic;
     }
 
+
+    @Override
+    public String toString() {
+        return "UserPojo{" +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateCreated='" + dateCreated + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userType='" + userType + '\'' +
+                ", userAddress='" + userAddress + '\'' +
+                ", profilePic='" + profilePic + '\'' +
+                '}';
+    }
 }
