@@ -89,4 +89,18 @@ public class RequestPojo {
         this.receiptPic = receiptPic;
     }
 
+    @Override
+    public String toString() {
+        return "RequestPojo{" +
+                "reqID=" + reqID +
+                ", empID=" + empID +
+                ", description='" + description + '\'' +
+                ", cost=" + cost +
+                ", purchaseDate='" + purchaseDate + '\'' +
+                ", requestDate='" + requestDate + '\'' +
+                ", status='" + status + '\'' +
+                ", receiptPic='" + receiptPic + '\'' +
+                '}';
+    }
+
 }
