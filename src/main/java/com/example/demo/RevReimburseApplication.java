@@ -9,7 +9,7 @@ public class RevReimburseApplication {
 	public static void main(String[] args) {
 		System.out.println("in");
 		SpringApplication.run(RevReimburseApplication.class, args);
-		System.out.println("out");
+		System.out.println("You may access this Web App by going to the following link: http://localhost:7777");
 
 	}
 

@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/users") // optional
+@RequestMapping("api/users")
 
 public class UsersController {
     @PostMapping()
     UserPojo addUser(@RequestBody UserPojo user) throws ApplicationException {
         //return userService.addUser(user);
-        return user;
+        return null;
     }
 
     @PutMapping()
     UserPojo updateUser(@RequestBody UserPojo user) throws ApplicationException {
         //return userService.updateUser(user);
-        return user;
+        return null;
     }
 
     @GetMapping()
