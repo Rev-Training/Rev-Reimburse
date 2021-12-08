@@ -1,1 +1,28 @@
-<p>request-management works!</p>
+<div>
+    <table class="center" id="requestDisplay">
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>User ID</th>
+                <th>Amount</th>
+                <th>Date Created</th>
+                <th>Status</th>
+                <th style="border: 0px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of allRequests">
+                <td>???</td>
+                <td>???</td>
+                <td>???/td>
+                <td>???</td>
+                <td>???</td>
+                <td *ngIf="request.status==pendingStatus">
+                    <button type="button" class="button" (click)="goToRequestEdit(request.reqID)">
+                        <span class="material-icons">Manage</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,1 +1,20 @@
-<p>home works!</p>
+<div class="header a" id="headerDIV">
+    <a *ngIf="isLoggedIn()" routerLink="home" class="logo"><u>E</u>xpense <u>R</u>eimbursement <u>S</u>ystem ||| </a>
+    <a *ngIf="!isLoggedIn()" routerLink="login" class="logo"><u>E</u>xpense <u>R</u>eimbursement <u>S</u>ystem</a>
+    <div class="header-right" *ngIf="!managerLevel()">
+        <a *ngIf="isLoggedIn()" class="nav-link" (click)="goToUserDetails(this.currentUserID())">My Account</a>
+        <a *ngIf="isLoggedIn()" class="nav-link" (click)="navigate(requestAdd)">Submit Request</a>
+        <a *ngIf="isLoggedIn()" class="nav-link" (click)="navigate(logout)">Logout</a>
+        <!-- <a *ngIf="!isLoggedIn()" class="nav-link" routerLink="login">Login</a> -->
+    </div>
+    <div class="header-right" *ngIf="managerLevel()">
+        <a *ngIf="isLoggedIn()" class="nav-link" (click)="navigate(userManage)">User Accounts</a>
+        <a *ngIf="isLoggedIn()" class="nav-link" (click)="navigate(requestManage)">Requests</a>
+        <a *ngIf="isLoggedIn()" class="nav-link" (click)="goToUserDetails(this.currentUserID())">My Account</a>
+        <a *ngIf="isLoggedIn()" class="nav-link" (click)="navigate(logout)">Logout</a>
+        <!-- <a *ngIf="!isLoggedIn()" class="nav-link" routerLink="login">Login</a> -->
+    </div>
+    <div class="header-right2" *ngIf="isLoggedIn()">
+        logged in as:[ {{currentUserName()}} ]
+    </div>
+</div>

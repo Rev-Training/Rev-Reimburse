@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/user/auth.service';
+import { RequestService } from '../request.service';
+import { RequestStatus, UserRequest } from '../user.request.model';
 
 @Component({
   selector: 'app-request-management',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestManagementComponent implements OnInit {
 
-  constructor() { }
+  allRequests: UserRequest[] = [];
+  pendingStatus: RequestStatus = RequestStatus.PENDING;
 
-  ngOnInit(): void {
+  constructor(private requestService: RequestService,
+    private authService: AuthService,
+    private router: Router) { }
+
+  ngOnInit(): void
+  {
+    this.requestService.getAllRequestsService().subscribe(
+      (response) =>
+      {
+        this.allRequests = response;
+      },
+      (error) =>
+      {
+        console.log(error);
+      }
+    );
   }
 
+  goToRequestEdit(requestID: any)
+  {
+    this.router.navigate(['request-details', requestID]);
+  }
 }

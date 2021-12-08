@@ -1,1 +1,36 @@
-<p>user-details works!</p>
+<div *ngIf="displayUser" class="card">
+    <img src="" alt="John" style="width:100%">
+    <h1>???</h1>
+    <h2>ID: ???</h2>
+    <p *ngIf="currentUser.userID>1"><button class="button" >View Requests</button></p>
+    <p *ngIf="currentUser.userID>1"><button class="button" >Reset Password</button></p>
+    <p *ngIf="currentUser.userID>1&&managerAccess()"><button class="button" >Remove User</button>
+    </p>
+</div>
+<br>
+<div *ngIf="displayRequests">
+    <table class="center" id="userRequestDisplay">
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Amount</th>
+                <th>Date Created</th>
+                <th>Status</th>
+                <th *ngIf="managerAccess()" style="border: 0px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of userRequests">
+                <td>???</td>
+                <td>???</td>
+                <td>???</td>
+                <td>???</td>
+                <td *ngIf="managerAccess() && request.status==pendingStatus">
+                    <button type="button" class="button" (click)="goToRequestEdit(request.reqID)">
+                        <span class="material-icons">Manage</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

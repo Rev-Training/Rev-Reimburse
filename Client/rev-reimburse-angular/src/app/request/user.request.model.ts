@@ -2,10 +2,10 @@ export class UserRequest
 {
     reqID: number = -1;
     empID: number = -1;
-    description: String = '';
+    description: string = '';
     cost: number = 0;
-    purchaseDate: String = '';
-    requestDate: String = '';
+    purchaseDate: string = '';
+    requestDate: string = '';
     status: RequestStatus = RequestStatus.PENDING;
 }
 export enum RequestStatus
