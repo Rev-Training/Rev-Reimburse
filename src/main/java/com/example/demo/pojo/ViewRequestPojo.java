@@ -1,5 +1,7 @@
 package com.example.demo.pojo;
 
+import com.example.demo.enums.RequestStatus;
+
 public class ViewRequestPojo {
 
     private int reqID;
@@ -9,13 +11,13 @@ public class ViewRequestPojo {
     private double cost ;
     private String purchaseDate ;
     private String requestDate ;
-    private String status ;
+    private RequestStatus status ;
 
 
     private String receiptPic;
 
 
-    public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, String requestDate, String status, String receiptPic) {
+    public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, String requestDate, RequestStatus status, String receiptPic) {
         super();
         this.reqID = reqID;
         this.firstName = firstName;
@@ -85,11 +87,11 @@ public class ViewRequestPojo {
         this.requestDate = requestDate;
     }
 
-    public String getStatus() {
+    public RequestStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RequestStatus status) {
         this.status = status;
     }
 

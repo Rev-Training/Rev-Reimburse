@@ -1,23 +1,51 @@
-package com.example.demo.pojo;
+package com.example.demo.entity;
 
 import com.example.demo.enums.RequestStatus;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
-public class RequestPojo {
+@Entity
+@Table(name="requests")
+public class Request {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="req_id")
     private int reqID;
+
+    @Column(name="emp_id")
     private int empID;
+
+    @Column(name="description")
     private String description;
-    private double cost ;
-    private Timestamp purchaseDate ;
-    private String requestDate ;
-    private RequestStatus status ;
+
+    @Column(name="cost")
+    private double cost;
+
+    @Column(name="purchase_date")
+    private String purchaseDate;
+
+    @Column(name="request_date")
+    private Timestamp requestDate;
+
+    @Column(name="status")
+    private RequestStatus status;
+
+    @Column(name="receipt_pic")
     private String receiptPic;
 
-
-    public RequestPojo(int reqID, int empID, String description, double cost, Timestamp purchaseDate, String requestDate, RequestStatus status, String receiptPic) {
+    public Request() {
         super();
+    }
+
+    public Request(int reqID, int empID, String description, double cost, String purchaseDate,
+                   Timestamp requestDate, RequestStatus status, String receiptPic) {
         this.reqID = reqID;
         this.empID = empID;
         this.description = description;
@@ -27,7 +55,6 @@ public class RequestPojo {
         this.status = status;
         this.receiptPic = receiptPic;
     }
-
 
     public int getReqID() {
         return reqID;
@@ -61,19 +88,19 @@ public class RequestPojo {
         this.cost = cost;
     }
 
-    public Timestamp getPurchaseDate() {
+    public String getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Timestamp purchaseDate) {
+    public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public String getRequestDate() {
+    public Timestamp getRequestDate() {
         return requestDate;
     }
 
-    public void setRequestDate(String requestDate) {
+    public void setRequestDate(Timestamp requestDate) {
         this.requestDate = requestDate;
     }
 
@@ -95,16 +122,15 @@ public class RequestPojo {
 
     @Override
     public String toString() {
-        return "RequestPojo{" +
+        return "Request{" +
                 "reqID=" + reqID +
                 ", empID=" + empID +
                 ", description='" + description + '\'' +
                 ", cost=" + cost +
                 ", purchaseDate='" + purchaseDate + '\'' +
-                ", requestDate='" + requestDate + '\'' +
-                ", status='" + status + '\'' +
+                ", requestDate=" + requestDate +
+                ", status=" + status +
                 ", receiptPic='" + receiptPic + '\'' +
                 '}';
     }
-
 }
