@@ -11,5 +11,6 @@ public interface UserService {
     boolean deleteUser(int userID) throws ApplicationException;
     List<UserPojo> getAllUsers() throws ApplicationException;
     UserPojo getAUser(int userID) throws ApplicationException;
+    UserPojo userLogin(String username, String userPassword) throws ApplicationException;
     void exitApplication();
 }
