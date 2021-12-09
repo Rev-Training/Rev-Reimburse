@@ -2,12 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.enums.RequestStatus;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -25,7 +20,10 @@ public class Request {
     @Column(name="description")
     private String description;
 
-    @Column(name="cost")
+    @Column(
+            name="cost",
+            columnDefinition = "NUMERIC(100, 2)"
+    )
     private double cost;
 
     @Column(name="purchase_date")
@@ -34,6 +32,7 @@ public class Request {
     @Column(name="request_date")
     private Timestamp requestDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="status")
     private RequestStatus status;
 

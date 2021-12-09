@@ -2,6 +2,8 @@ package com.example.demo.pojo;
 
 import com.example.demo.enums.RequestStatus;
 
+import java.sql.Timestamp;
+
 public class ViewRequestPojo {
 
     private int reqID;
@@ -10,14 +12,14 @@ public class ViewRequestPojo {
     private String description;
     private double cost ;
     private String purchaseDate ;
-    private String requestDate ;
+    private Timestamp requestDate ;
     private RequestStatus status ;
 
 
     private String receiptPic;
 
 
-    public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, String requestDate, RequestStatus status, String receiptPic) {
+    public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, Timestamp requestDate, RequestStatus status, String receiptPic) {
         super();
         this.reqID = reqID;
         this.firstName = firstName;
@@ -79,11 +81,11 @@ public class ViewRequestPojo {
         this.purchaseDate = purchaseDate;
     }
 
-    public String getRequestDate() {
+    public Timestamp getRequestDate() {
         return requestDate;
     }
 
-    public void setRequestDate(String requestDate) {
+    public void setRequestDate(Timestamp requestDate) {
         this.requestDate = requestDate;
     }
 

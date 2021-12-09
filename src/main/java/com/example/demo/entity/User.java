@@ -2,12 +2,7 @@ package com.example.demo.entity;
 
 import com.example.demo.enums.UserType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -37,6 +32,7 @@ public class User {
     @Column(name="user_email")
     private String userEmail;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="user_type")
     private UserType userType;
 

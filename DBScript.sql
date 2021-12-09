@@ -24,8 +24,8 @@ CREATE TABLE requests (
     emp_id INT,
     description VARCHAR(255),
     cost DECIMAL(100, 2) NOT NULL,
-    purchase_date TIMESTAMP NOT NULL,
-    request_date VARCHAR(50) NOT NULL,
+    purchase_date VARCHAR(50) NOT NULL,
+    request_date TIMESTAMP NOT NULL,
     status request_statuses NOT NULL,
     receipt_pic VARCHAR(255),
     FOREIGN KEY (emp_id) REFERENCES users(user_id)
