@@ -73,7 +73,7 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public List<RequestPojo> getEmployeeRequests(int empID) throws ApplicationException {
-        List<Request> allRequestsEntity = this.requestRepositoryDao.findByEmpID(empID)
+        List<Request> allRequestsEntity = this.requestRepositoryDao.findByEmpID(empID);
         List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
         allRequestsEntity.forEach((request) -> {
             RequestPojo requestPojo = new RequestPojo( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
