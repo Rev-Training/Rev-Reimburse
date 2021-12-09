@@ -12,6 +12,8 @@ import { UserInputComponent } from './user/user-input/user-input.component';
 import { RequestDetailsComponent } from './request/request-details/request-details.component';
 import { RequestManagementComponent } from './request/request-management/request-management.component';
 import { RequestInputComponent } from './request/request-input/request-input.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { RequestInputComponent } from './request/request-input/request-input.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

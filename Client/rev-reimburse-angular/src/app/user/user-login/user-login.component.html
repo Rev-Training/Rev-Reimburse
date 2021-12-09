@@ -1,1 +1,35 @@
-<p>user-login works!</p>
+<!-- Button to open the modal login form -->
+<button *ngIf="buttonDisplay" class="button" (click)="buttonDisplay=false"
+    onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+    <span (click)="buttonDisplay=true" onclick="document.getElementById('id01').style.display='none'" class="close"
+        title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <form class="modal-content animate" action="/action_page.php">
+        <div class="container">
+            <p>
+                <label class="loginLabel" for="uname"><b>Username: </b></label>
+                <input type="text" placeholder="Enter Email Address" name="uname" required
+                    [(ngModel)]="newUser.username">
+            </p>
+            <p>
+                <label class="loginLabel" for="psw"><b>Password: </b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required
+                    [(ngModel)]="newUser.userPassword">
+            </p>
+        </div>
+        <button class="button2" type="button" (click)="validateLogin()">Login</button>
+        <p>
+            <button class="cancelbtn" type="button" (click)="buttonDisplay=true"
+                onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+        </p>
+
+        <div class="container" style="background-color:#f1f1f100">
+
+            <span class="psw">Forgot <a href="#" (click)="forgotPassword()">password?</a></span>
+        </div>
+    </form>
+</div>
