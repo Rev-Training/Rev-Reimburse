@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: 'user-management', component: UserManagementComponent },
   { path: 'request-management', component: RequestManagementComponent },
-  { path: 'user-details/:sentUserID', component: UserDetailsComponent },
-  { path: 'request-details/:sentRequestID', component: RequestDetailsComponent },
+  { path: 'user-details', component: UserDetailsComponent },
+  { path: 'request-details', component: RequestDetailsComponent },
   { path: 'request-add', component: RequestInputComponent },
 ];
 
