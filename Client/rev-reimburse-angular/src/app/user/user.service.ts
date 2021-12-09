@@ -34,7 +34,7 @@ export class UserService {
     return this.http.get<User>(this.baseURL + "/login", {
       params: {
         username: user.username,
-        password: user.userPassword
+        userPassword: user.userPassword
       }
     });
   }
