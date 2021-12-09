@@ -36,6 +36,8 @@ public class UsersController {
 
     @GetMapping("/login")
     UserPojo login(@RequestParam(name = "username") String username, @RequestParam(name = "userPassword") String userPassword) throws ApplicationException {
+        System.out.println(username);
+        System.out.println(userPassword);
         return userService.userLogin(username, userPassword);
     }
 
