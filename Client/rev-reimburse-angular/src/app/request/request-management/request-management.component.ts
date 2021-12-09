@@ -32,8 +32,11 @@ export class RequestManagementComponent implements OnInit {
     );
   }
 
-  goToRequestEdit(requestID: any)
+  goToRequestEdit(request: UserRequest)
   {
-    this.router.navigate(['request-details', requestID]);
+    this.requestService.requestCache = request;
+    this.router.navigate(['request-details']);
   }
+
+
 }

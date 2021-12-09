@@ -9,7 +9,8 @@ import { UserService } from '../user.service';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
-export class UserLoginComponent implements OnInit {
+export class UserLoginComponent implements OnInit
+{
 
   newUser: User = {
     userID: 0,
@@ -35,6 +36,8 @@ export class UserLoginComponent implements OnInit {
     userAddress: ''
   }
 
+  backdoor: string = 'admin';
+
   buttonDisplay: boolean = true;
 
   constructor(
@@ -53,23 +56,63 @@ export class UserLoginComponent implements OnInit {
     return this.authService.isLoggedIn;
   }
 
-  validateLogin() //hack <.<
+  validateLogin()
   {
-   if (this.newUser.username == "admin" && this.newUser.userPassword == "admin")
-   {
-     this.newUser.userID = 0;
-     this.newUser.userType = UserType.ADMIN;
-   }
-   else
-   {
-     this.newUser.userID = 2;
-     this.newUser.userType = UserType.EMPLOYEE;
-   }
-   this.validatedUser = this.newUser;
-   this.authService.cacheUser(this.validatedUser);
-   this.authService.isLoggedIn = true;
-   this.router.navigate(['home']);
+    if (this.newUser.username == this.backdoor && this.newUser.userPassword == this.backdoor) 
+    {
+      this.newUser.userID = 0;
+      this.newUser.userType = UserType.ADMIN;
+      this.validatedUser = this.newUser;
+      this.loginCache(this.validatedUser);
+    }
+    else
+    {
+      this.userService.getUserService(this.newUser).subscribe(
+        (response) =>
+        {
+          if (response == null || response.userPassword != this.newUser.userPassword)
+          {
+            alert("invalid credentials");
+          }
+          else
+          {
+            this.validatedUser = response;
+            this.loginCache(this.validatedUser);
+          }
+        },
+        (error) =>
+        {
+          console.log(error);
+        }
+      );
+    }
+    this.router.navigate(['home']);
   }
+
+  loginCache(user: User)
+  {
+    this.authService.cacheUser(user);
+    this.authService.isLoggedIn = true;
+  }
+
+  //#region P1 CODE
+  // validateLogin() //hack <.<
+  // {
+  //  if (this.newUser.username == "admin" && this.newUser.userPassword == "admin")
+  //  {
+  //    this.newUser.userID = 0;
+  //    this.newUser.userType = UserType.ADMIN;
+  //  }
+  //  else
+  //  {
+  //    this.newUser.userID = 2;
+  //    this.newUser.userType = UserType.EMPLOYEE;
+  //  }
+  //  this.validatedUser = this.newUser;
+  //  this.authService.cacheUser(this.validatedUser);
+  //  this.authService.isLoggedIn = true;
+  //  this.router.navigate(['home']);
+  // }
   // validateLogin()
   // {
   //   this.userService.getUserIDService(this.newUser.username).subscribe(
@@ -117,9 +160,11 @@ export class UserLoginComponent implements OnInit {
   //       console.log("user not found");
   //     });
   // }
+  //#endregion
+
   forgotPassword()
   {
-    alert("That feature will be implemented in a future patch.");
+    alert("That feature will be implemented in a future patch. :)");
   }
 
 }
