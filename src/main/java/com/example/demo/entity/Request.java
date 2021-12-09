@@ -1,29 +1,52 @@
-package com.example.demo.pojo;
+package com.example.demo.entity;
 
 import com.example.demo.enums.RequestStatus;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-public class ViewRequestPojo {
+@Entity
+@Table(name="requests")
+public class Request {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="req_id")
     private int reqID;
-    private String firstName;
-    private String lastName;
+
+    @Column(name="emp_id")
+    private int empID;
+
+    @Column(name="description")
     private String description;
-    private double cost ;
-    private String purchaseDate ;
-    private Timestamp requestDate ;
-    private RequestStatus status ;
 
+    @Column(
+            name="cost",
+            columnDefinition = "NUMERIC(100, 2)"
+    )
+    private double cost;
 
+    @Column(name="purchase_date")
+    private String purchaseDate;
+
+    @Column(name="request_date")
+    private Timestamp requestDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="status")
+    private RequestStatus status;
+
+    @Column(name="receipt_pic")
     private String receiptPic;
 
-
-    public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, Timestamp requestDate, RequestStatus status, String receiptPic) {
+    public Request() {
         super();
+    }
+
+    public Request(int reqID, int empID, String description, double cost, String purchaseDate,
+                   Timestamp requestDate, RequestStatus status, String receiptPic) {
         this.reqID = reqID;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.empID = empID;
         this.description = description;
         this.cost = cost;
         this.purchaseDate = purchaseDate;
@@ -31,7 +54,6 @@ public class ViewRequestPojo {
         this.status = status;
         this.receiptPic = receiptPic;
     }
-
 
     public int getReqID() {
         return reqID;
@@ -41,20 +63,12 @@ public class ViewRequestPojo {
         this.reqID = reqID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public int getEmpID() {
+        return empID;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setEmpID(int empID) {
+        this.empID = empID;
     }
 
     public String getDescription() {
@@ -107,18 +121,15 @@ public class ViewRequestPojo {
 
     @Override
     public String toString() {
-        return "ViewRequestPojo{" +
+        return "Request{" +
                 "reqID=" + reqID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", empID=" + empID +
                 ", description='" + description + '\'' +
                 ", cost=" + cost +
                 ", purchaseDate='" + purchaseDate + '\'' +
-                ", requestDate='" + requestDate + '\'' +
-                ", status='" + status + '\'' +
+                ", requestDate=" + requestDate +
+                ", status=" + status +
                 ", receiptPic='" + receiptPic + '\'' +
                 '}';
     }
-
-
 }
