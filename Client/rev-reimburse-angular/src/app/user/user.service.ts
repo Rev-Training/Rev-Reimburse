@@ -1,12 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './user.model';
+import { User, UserType } from './user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  userCache: User = {
+    userID: 0,
+    username: '',
+    userPassword: '',
+    firstName: '',
+    lastName: '',
+    dateCreated: '',
+    userEmail: '',
+    userType: UserType.EMPLOYEE,
+    userAddress: ''
+  }
 
   baseURL = "/api/users";
 

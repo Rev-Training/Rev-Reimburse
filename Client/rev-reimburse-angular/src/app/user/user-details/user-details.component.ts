@@ -39,26 +39,27 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit(): void
   {
     this.displayUser = false;
-    let recievedUserID: any = this.activatedRoute.snapshot.paramMap.get("sentUserID");
-    this.userService.getUserByIDService(recievedUserID).subscribe(
-      (response) =>
-      {
-        this.currentUser = response;
-        this.requestService.getAllUserRequestsService(recievedUserID).subscribe(
-          (response) =>
-          {
-            this.userRequests = response;
-          },
-          (error) =>
-          {
-            console.log(error);
-          }
-        )
-      },
-      (error) =>
-      {
-        console.log(error);
-      });
+    this.currentUser = this.userService.userCache;
+    // let recievedUserID: any = this.activatedRoute.snapshot.paramMap.get("sentUserID");
+    // this.userService.getUserByIDService(recievedUserID).subscribe(
+    //   (response) =>
+    //   {
+    //     this.currentUser = response;
+    //     this.requestService.getAllUserRequestsService(recievedUserID).subscribe(
+    //       (response) =>
+    //       {
+    //         this.userRequests = response;
+    //       },
+    //       (error) =>
+    //       {
+    //         console.log(error);
+    //       }
+    //     )
+    //   },
+    //   (error) =>
+    //   {
+    //     console.log(error);
+    //   });
     this.displayUser = true;
   }
 
@@ -69,9 +70,10 @@ export class UserDetailsComponent implements OnInit {
     return this.authService.userIsManager();
   }
 
-  goToRequestEdit(requestID: any)
+  goToRequestEdit(request: UserRequest)
   {
-    this.router.navigate(['request-details', requestID]);
+    this.requestService.requestCache = request;
+    this.router.navigate(['request-details']);
   }
 
   resetUserPassword()
