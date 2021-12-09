@@ -20,7 +20,7 @@ export class UserService {
     userAddress: ''
   }
 
-  baseURL = "localhost:7777/api/users";
+  baseURL = "/api/users";
 
   constructor(private http: HttpClient) { }
 
