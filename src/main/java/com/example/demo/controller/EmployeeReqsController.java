@@ -25,12 +25,12 @@ public class EmployeeReqsController {
 
     @PostMapping()
     RequestPojo addRequest(@RequestBody RequestPojo request) throws ApplicationException {
-        return null;
+        return requestService.addRequest(request);
     }
 
     @GetMapping("{bid}")
     List<RequestPojo> getEmployeeRequests(@PathVariable("bid") int employeeID) throws ApplicationException {
-        return null;
+        return requestService.getEmployeeRequests(employeeID);
     }
 
     @GetMapping("req/{bid}")

@@ -2,12 +2,15 @@ package com.example.demo.service;
 
 import com.example.demo.dao.RequestRepositoryDao;
 import com.example.demo.entity.Request;
+import com.example.demo.entity.User;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.RequestPojo;
+import com.example.demo.pojo.UserPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +23,19 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public RequestPojo addRequest(RequestPojo request) throws ApplicationException {
-        return null;
+        Request newRequest = new Request(  request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
+                request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+        Request returnRequest = requestRepositoryDao.saveAndFlush(newRequest);
+        request.setReqID(returnRequest.getReqID());
+        return request;
     }
 
     @Override
     public RequestPojo updateRequest(RequestPojo request) throws ApplicationException {
-        return null;
+        Request updateRequest = new Request( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
+                request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+        Request returnRequest = requestRepositoryDao.save(updateRequest);
+        return request;
     }
 
     @Override
@@ -35,7 +45,17 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public List<RequestPojo> getAllRequests() throws ApplicationException {
-        return null;
+        List<Request> allRequestsEntity = this.requestRepositoryDao.findAll();
+        List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
+        allRequestsEntity.forEach((request) -> {
+            RequestPojo requestPojo = new RequestPojo( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
+                    request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+
+            allRequestsPojo.add(requestPojo);
+        });
+        return allRequestsPojo;
+
+
     }
 
     @Override
@@ -49,6 +69,19 @@ public class RequestServiceImpl implements RequestService{
                                             request.getRequestDate(), request.getStatus(), request.getReceiptPic());
         }
         return requestPojo;
+    }
+
+    @Override
+    public List<RequestPojo> getEmployeeRequests(int empID) throws ApplicationException {
+        List<Request> allRequestsEntity = this.requestRepositoryDao.findByEmpID(empID)
+        List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
+        allRequestsEntity.forEach((request) -> {
+            RequestPojo requestPojo = new RequestPojo( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
+                    request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+
+            allRequestsPojo.add(requestPojo);
+        });
+        return allRequestsPojo;
     }
 
     @Override

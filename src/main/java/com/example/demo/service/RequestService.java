@@ -11,6 +11,8 @@ public interface RequestService {
     boolean deleteRequest(int reqID) throws ApplicationException;
     List<RequestPojo> getAllRequests() throws ApplicationException;
     RequestPojo getARequest(int reqID) throws ApplicationException;
+    List<RequestPojo> getEmployeeRequests(int empID) throws ApplicationException;
+
     void exitApplication();
 
 }
