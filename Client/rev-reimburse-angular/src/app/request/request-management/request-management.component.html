@@ -3,22 +3,23 @@
         <thead>
             <tr>
                 <th>Request ID</th>
-                <th>User ID</th>
+                <th>Employee ID</th>
                 <th>Amount</th>
-                <th>Date Created</th>
-                <th>Status</th>
+                <th>Date of Purchase</th>
+                <th>Date of Request</th>
                 <th style="border: 0px;"></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let request of allRequests">
-                <td>???</td>
-                <td>???</td>
-                <td>???/td>
-                <td>???</td>
-                <td>???</td>
+                <td>{{request.reqID}}</td>
+                <td>{{request.empID}}</td>
+                <td>{{request.cost | currency}}/td>
+                <td>{{request.purchaseDate | date}}</td>
+                <td>{{request.requestDate | date}}</td>
+                <td>{{request.status}}</td>
                 <td *ngIf="request.status==pendingStatus">
-                    <button type="button" class="button" (click)="goToRequestEdit(request.reqID)">
+                    <button type="button" class="button" (click)="goToRequestEdit(request)">
                         <span class="material-icons">Manage</span>
                     </button>
                 </td>

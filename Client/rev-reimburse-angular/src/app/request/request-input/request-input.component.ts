@@ -35,13 +35,13 @@ export class RequestInputComponent implements OnInit {
     if (this.newRequest.cost >= 1.00)
     {
       this.newRequest.empID = this.authService.getCurrentUser().userID;
-
+      this.newRequest.requestDate = Date.now.toString();
       this.requestService.addRequestService(this.newRequest).subscribe(
         (response) =>
         {
           if (response.cost == this.newRequest.cost)
           {
-            alert("Your request for $" + response.cost + " was added successfully.");
+            alert("Your request for $" + response.cost.toString() + " was added successfully.");
           }
           else
           {

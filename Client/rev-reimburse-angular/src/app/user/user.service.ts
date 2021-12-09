@@ -19,7 +19,12 @@ export class UserService {
 
   getUserService(user: User): Observable<User>
   {
-    return this.http.get<User>(this.baseURL + "/login" + user.userID);
+    return this.http.get<User>(this.baseURL + "/login", {
+      params: {
+        username: user.username,
+        password: user.userPassword
+      }
+    });
   }
 
   getUserByIDService(userID: number): Observable<User>
