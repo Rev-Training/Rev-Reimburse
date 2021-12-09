@@ -1,27 +1,52 @@
-package com.example.demo.pojo;
+package com.example.demo.entity;
 
 import com.example.demo.enums.UserType;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-public class UserPojo {
+@Entity
+@Table(name="users")
+public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
     private int userID;
+
+    @Column(name="username")
     private String username;
+
+    @Column(name="user_password")
     private String userPassword;
+
+    @Column(name="first_name")
     private String firstName;
+
+    @Column(name="last_name")
     private String lastName;
+
+    @Column(name="date_created")
     private Timestamp dateCreated;
+
+    @Column(name="user_email")
     private String userEmail;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="user_type")
     private UserType userType;
+
+    @Column(name="user_address")
     private String userAddress;
+
+    @Column(name="profile_pic")
     private String profilePic;
 
-
-    public UserPojo(int userID, String username, String userPassword, String firstName,
-                    String lastName, Timestamp dateCreated, String userEmail,
-                    UserType userType, String userAddress, String profilePic) {
+    public User() {
         super();
+    }
+
+    public User(int userID, String username, String userPassword, String firstName, String lastName, Timestamp dateCreated, String userEmail, UserType userType, String userAddress, String profilePic) {
         this.userID = userID;
         this.username = username;
         this.userPassword = userPassword;
@@ -33,8 +58,6 @@ public class UserPojo {
         this.userAddress = userAddress;
         this.profilePic = profilePic;
     }
-
-
 
     public int getUserID() {
         return userID;
@@ -116,18 +139,17 @@ public class UserPojo {
         this.profilePic = profilePic;
     }
 
-
     @Override
     public String toString() {
-        return "UserPojo{" +
+        return "User{" +
                 "userID=" + userID +
                 ", username='" + username + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dateCreated='" + dateCreated + '\'' +
+                ", dateCreated=" + dateCreated +
                 ", userEmail='" + userEmail + '\'' +
-                ", userType='" + userType + '\'' +
+                ", userType=" + userType +
                 ", userAddress='" + userAddress + '\'' +
                 ", profilePic='" + profilePic + '\'' +
                 '}';
