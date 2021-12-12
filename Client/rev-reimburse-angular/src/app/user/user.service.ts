@@ -1,14 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './user.model';
+import { User, UserType } from './user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  baseURL = "http://localhost:8888/api/users";
+  userCache: User = {
+    userID: 0,
+    username: '',
+    userPassword: '',
+    firstName: '',
+    lastName: '',
+    dateCreated: '',
+    userEmail: '',
+    userType: UserType.EMPLOYEE,
+    userAddress: ''
+  }
+
+  baseURL = "/api/users";
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +31,12 @@ export class UserService {
 
   getUserService(user: User): Observable<User>
   {
-    return this.http.get<User>(this.baseURL + "/" + user.userID);
+    return this.http.get<User>(this.baseURL + "/login", {
+      params: {
+        username: user.username,
+        userPassword: user.userPassword
+      }
+    });
   }
 
   getUserByIDService(userID: number): Observable<User>

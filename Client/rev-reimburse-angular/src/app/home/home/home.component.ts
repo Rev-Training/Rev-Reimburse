@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/user/auth.service';
+import { User } from 'src/app/user/user.model';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit
+{
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) { }
 
   logout: string = 'logout';
   userManage: string = 'user-management';
@@ -21,10 +24,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-  currentUserID(): number
-  {
-    return this.authService.getCurrentUser().userID;
-  }
   currentUserName(): string
   {
     return this.authService.getCurrentUser().username;
@@ -40,9 +39,10 @@ export class HomeComponent implements OnInit {
     return this.authService.userIsManager();
   }
 
-  goToUserDetails(userID: any)
+  goToMyAccount()
   {
-    this.router.navigate(['user-details', userID]);
+    this.userService.userCache = this.authService.getCurrentUser();
+    this.router.navigate(['user-details']);
   }
 
   navigate(route: string)

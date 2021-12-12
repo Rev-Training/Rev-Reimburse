@@ -14,7 +14,11 @@
                 <input type="number" placeholder="Enter amount in USD" name="amount" required
                     [(ngModel)]="newRequest.cost">
             </p>
-
+            <p>
+                <label class="loginLabel" for="purchaseDate"><b>Date of Purhase: </b></label>
+                <input type="datetime-local" placeholder="Date/Time" name="amount" required
+                    [(ngModel)]="newRequest.purchaseDate">
+            </p>
         </div>
         <button class="button2" type="button" (click)="submitNewRequest()">Submit Request</button>
         <p>

@@ -1,9 +1,11 @@
 <div *ngIf="displayRequest" class="card">
-    <img src="../../../assets/makereceipt-receipt-maker.jpg" alt="USA">
-    <h1>???</h1>
-    <h2>Status: ???</h2>
-    <h3>User: ???</h3>
-    <p>Submitted: ???</p>
+    <img alt="USA">
+    <h1>{{currentRequest.cost | currency}}</h1>
+    <h2>Status: {{currentRequest.status}}</h2>
+    <h2>User: {{currentRequest.empID}}</h2>
+    <h3>Purchased: {{currentRequest.purchaseDate | date}}</h3>
+    <h3>Submitted: {{currentRequest.requestDate | date}}</h3>
+    <p>Details: {{currentRequest.description}}</p>
     <p *ngIf="confirmRequestEditButtons">Are you sure?</p>
     <p *ngIf="confirmRequestEditButtons"><button (click)="updateRequest()">CONFIRM</button></p>
     <p *ngIf="confirmRequestEditButtons"><button (click)="cancelRequestEdit()">GO BACK</button></p>

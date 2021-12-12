@@ -1,40 +1,67 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserRequest } from './user.request.model';
+import { UserRequest, RequestStatus } from './user.request.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
 
-  baseURL = "http://localhost:8888/api/requests";
+  baseURL: string = "/api";
+  employee: string = "/employee-reqs";
+  manager: string = "/manager-reqs";
+
+  requestCache: UserRequest = {
+    reqID: 0,
+    empID: 0,
+    description: '',
+    cost: 0,
+    purchaseDate: '',
+    requestDate: '',
+    status: RequestStatus.PENDING
+  }
 
   constructor(private http: HttpClient) { }
 
   addRequestService(request: UserRequest): Observable<UserRequest>
   {
-    return this.http.post<UserRequest>(this.baseURL, request);
+    return this.http.post<UserRequest>(this.baseURL + this.employee, request);
   }
 
-  getRequestService(requestID: number): Observable<UserRequest>
-  {
-    return this.http.get<UserRequest>(this.baseURL + "/id/" + requestID);
-  }
+  // getRequestService(requestID: number): Observable<UserRequest>
+  // {
+  //   return this.http.get<UserRequest>(this.baseURL + "/id/" + requestID);
+  // }
 
   getAllRequestsService(): Observable<UserRequest[]>
   {
-    return this.http.get<UserRequest[]>(this.baseURL);
+    return this.http.get<UserRequest[]>(this.baseURL + this.manager);
+  }
+
+  getPendingRequestsService()
+  {
+    return this.http.get<UserRequest[]>(this.baseURL + this.manager + "/pending");
+  }
+
+  getApprovedRequestsService()
+  {
+    return this.http.get<UserRequest[]>(this.baseURL + this.manager + "/approved");
+  }
+
+  getDeniedRequestsService()
+  {
+    return this.http.get<UserRequest[]>(this.baseURL + this.manager + "/denied");
   }
 
   getAllUserRequestsService(userID: number): Observable<UserRequest[]>
   {
-    return this.http.get<UserRequest[]>(this.baseURL + "/user/" + userID);
+    return this.http.get<UserRequest[]>(this.baseURL + this.employee + "/" + userID);
   }
 
-  updateRequestService(request: UserRequest, approve: boolean): Observable<UserRequest>
+  updateRequestService(request: UserRequest): Observable<UserRequest>
   {
-    let approval: string = approve ? "/a/" : "/d/";
-    return this.http.put<UserRequest>(this.baseURL + approval + request.reqID, request);
+    return this.http.put<UserRequest>(this.baseURL + this.manager, request);
   }
+
 }

@@ -1,5 +1,9 @@
 package com.example.demo.pojo;
 
+import com.example.demo.enums.UserType;
+
+import java.sql.Timestamp;
+
 public class UserPojo {
 
     private int userID;
@@ -7,16 +11,16 @@ public class UserPojo {
     private String userPassword;
     private String firstName;
     private String lastName;
-    private String dateCreated;
+    private Timestamp dateCreated;
     private String userEmail;
-    private String userType;
+    private UserType userType;
     private String userAddress;
     private String profilePic;
 
 
     public UserPojo(int userID, String username, String userPassword, String firstName,
-                    String lastName, String dateCreated, String userEmail,
-                    String userType, String userAddress, String profilePic) {
+                    String lastName, Timestamp dateCreated, String userEmail,
+                    UserType userType, String userAddress, String profilePic) {
         super();
         this.userID = userID;
         this.username = username;
@@ -72,11 +76,11 @@ public class UserPojo {
         this.lastName = lastName;
     }
 
-    public String getDateCreated() {
+    public Timestamp getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(String dateCreated) {
+    public void setDateCreated(Timestamp dateCreated) {
         this.dateCreated = dateCreated;
     }
 
@@ -88,11 +92,11 @@ public class UserPojo {
         this.userEmail = userEmail;
     }
 
-    public String getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 

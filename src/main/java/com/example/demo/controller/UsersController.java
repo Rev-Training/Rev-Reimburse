@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.UserPojo;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,28 +12,33 @@ import java.util.List;
 @RequestMapping("api/users")
 
 public class UsersController {
+
+    @Autowired
+    UserService userService;
+
     @PostMapping()
     UserPojo addUser(@RequestBody UserPojo user) throws ApplicationException {
         //return userService.addUser(user);
-        return null;
+        return userService.addUser(user);
     }
 
     @PutMapping()
     UserPojo updateUser(@RequestBody UserPojo user) throws ApplicationException {
         //return userService.updateUser(user);
-        return null;
+        return userService.updateUser(user);
     }
 
     @GetMapping()
     List<UserPojo> getAllUsers() throws ApplicationException {
         //return userService.getAllUsers();
-        return null;
+        return userService.getAllUsers();
     }
 
     @GetMapping("/login")
-    UserPojo login() throws ApplicationException {
-        //return userService.login(@RequestParam String username, @RequestParam String password);
-        return null;
+    UserPojo login(@RequestParam(name = "username") String username, @RequestParam(name = "userPassword") String userPassword) throws ApplicationException {
+        System.out.println(username);
+        System.out.println(userPassword);
+        return userService.userLogin(username, userPassword);
     }
 
     @DeleteMapping()

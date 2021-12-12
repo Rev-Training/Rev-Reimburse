@@ -36,28 +36,31 @@ export class RequestDetailsComponent implements OnInit {
     this.confirmRequestEditButtons = false;
     this.displayRequest = false;
 
-    let recievedRequestID: any = this.activatedRoute.snapshot.paramMap.get("sentRequestID");
-    console.log(this.activatedRoute.snapshot.paramMap.get("sentRequestID"));
-    this.requestService.getRequestService(recievedRequestID).subscribe(
-      (response) =>
-      {
-        this.currentRequest = response;
-        this.userService.getUserByIDService(this.currentRequest.empID).subscribe(
-          (response) =>
-          {
-            this.requestUserName = response.username;
-          },
-          (error) =>
-          {
-            console.log(error);
-          })
-        this.displayRequest = true;
-      },
-      (error) =>
-      {
-        console.log(error);
-      }
-    );
+    this.currentRequest = this.requestService.requestCache;
+    this.displayRequest = true;
+
+    // let recievedRequestID: any = this.activatedRoute.snapshot.paramMap.get("sentRequestID");
+    // console.log(this.activatedRoute.snapshot.paramMap.get("sentRequestID"));
+    // this.requestService.getRequestService(recievedRequestID).subscribe(
+    //   (response) =>
+    //   {
+    //     this.currentRequest = response;
+    //     this.userService.getUserByIDService(this.currentRequest.empID).subscribe(
+    //       (response) =>
+    //       {
+    //         this.requestUserName = response.username;
+    //       },
+    //       (error) =>
+    //       {
+    //         console.log(error);
+    //       })
+    //     this.displayRequest = true;
+    //   },
+    //   (error) =>
+    //   {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   confirmRequestEdit(approval: boolean)
@@ -78,7 +81,7 @@ export class RequestDetailsComponent implements OnInit {
 
   updateRequest()
   {
-    this.requestService.updateRequestService(this.currentRequest, this.pendingApproval).subscribe(
+    this.requestService.updateRequestService(this.currentRequest).subscribe(
       (response) =>
       {
         let userAlert: string = "Request #" + response.reqID + " has been " + (this.pendingApproval ? "approved." : "denied.");
