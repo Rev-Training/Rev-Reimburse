@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+//import com.example.demo.converters.RequestStatusConverter;
 import com.example.demo.enums.RequestStatus;
 
 import javax.persistence.*;
@@ -33,7 +34,11 @@ public class Request {
     private Timestamp requestDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="status")
+    @Column(
+            name="status",
+            columnDefinition = "request_statuses"
+    )
+//    @Convert(converter = RequestStatusConverter.class)
     private RequestStatus status;
 
     @Column(name="receipt_pic")

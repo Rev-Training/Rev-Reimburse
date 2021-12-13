@@ -11,6 +11,6 @@ export class UserRequest
 export enum RequestStatus
 {
     PENDING,
-    APPROVED,
+    ACCEPTED,
     DENIED
 }
