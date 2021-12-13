@@ -2,55 +2,68 @@ package com.example.demo.entity;
 
 //import com.example.demo.converters.RequestStatusConverter;
 import com.example.demo.enums.RequestStatus;
+import com.example.demo.types.PostgresSQLEnumType;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name="requests")
-public class Request {
+//@TypeDef(
+//    name = "postgres_enum",
+//    typeClass = PostgresSQLEnumType.class
+//)
+public class ViewRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="req_id")
+    @Column(name = "req_id")
     private int reqID;
 
-    @Column(name="emp_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "emp_id", nullable = false, insertable = false, updatable = false)
+    private User user;
+
+    @Column(name = "emp_id")
     private int empID;
 
-    @Column(name="description")
+
+    @Column(name = "description")
     private String description;
 
     @Column(
-            name="cost",
+            name = "cost",
             columnDefinition = "NUMERIC(100, 2)"
     )
     private double cost;
 
-    @Column(name="purchase_date")
+    @Column(name = "purchase_date")
     private String purchaseDate;
 
-    @Column(name="request_date")
+    @Column(name = "request_date")
     private Timestamp requestDate;
 
     @Enumerated(EnumType.STRING)
     @Column(
-            name="status",
-            columnDefinition = "request_statuses"
+        name = "status",
+        columnDefinition = "request_statuses"
     )
 //    @Convert(converter = RequestStatusConverter.class)
+//    @Type( type = "postgres_enum")
     private RequestStatus status;
 
-    @Column(name="receipt_pic")
+    @Column(name = "receipt_pic")
     private String receiptPic;
 
-    public Request() {
+    public ViewRequest() {
         super();
     }
 
-    public Request(int reqID, int empID, String description, double cost, String purchaseDate,
-                   Timestamp requestDate, RequestStatus status, String receiptPic) {
+    public ViewRequest(int reqID, User user, int empID, String description, double cost, String purchaseDate, Timestamp requestDate, RequestStatus status, String receiptPic) {
         this.reqID = reqID;
+        this.user = user;
         this.empID = empID;
         this.description = description;
         this.cost = cost;
@@ -66,6 +79,14 @@ public class Request {
 
     public void setReqID(int reqID) {
         this.reqID = reqID;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getEmpID() {
@@ -123,18 +144,6 @@ public class Request {
     public void setReceiptPic(String receiptPic) {
         this.receiptPic = receiptPic;
     }
-
-    @Override
-    public String toString() {
-        return "Request{" +
-                "reqID=" + reqID +
-                ", empID=" + empID +
-                ", description='" + description + '\'' +
-                ", cost=" + cost +
-                ", purchaseDate='" + purchaseDate + '\'' +
-                ", requestDate=" + requestDate +
-                ", status=" + status +
-                ", receiptPic='" + receiptPic + '\'' +
-                '}';
-    }
 }
+
+

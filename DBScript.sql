@@ -2,8 +2,9 @@ DROP DATABASE rev_reimburse;
 
 CREATE DATABASE rev_reimburse;
 
+\c rev_reimburse
 
-CREATE TYPE request_statuses AS ENUM ('PENDING', 'DENIED', 'ACCEPTED');
+CREATE TYPE request_statuses AS ENUM ('PENDING', 'DENIED', 'APPROVED');
 CREATE TYPE user_roles AS ENUM ('ADMIN', 'MANAGER', 'EMPLOYEE');
 
 CREATE TABLE users (
@@ -16,7 +17,8 @@ CREATE TABLE users (
     user_email VARCHAR(50) NOT NULL,
     user_type user_roles NOT NULL,
     user_address VARCHAR(75),
-    profile_pic VARCHAR(255)
+    profile_pic VARCHAR(255),
+    user_removed boolean DEFAULT false
 );
 
 CREATE TABLE requests (
@@ -28,6 +30,7 @@ CREATE TABLE requests (
     request_date TIMESTAMP NOT NULL,
     status request_statuses NOT NULL,
     receipt_pic VARCHAR(255),
+    request_removed boolean DEFAULT false,
     FOREIGN KEY (emp_id) REFERENCES users(user_id)
 );
 
@@ -65,4 +68,4 @@ INSERT INTO requests (emp_id, description, cost, purchase_date, request_date, st
 VALUES (3, 'Dinner', 100.95, current_timestamp, '12/05/2021', 'DENIED', 'PLACE_HOLDER');
 
 INSERT INTO requests (emp_id, description, cost, purchase_date, request_date, status, receipt_pic)
-VALUES (3, 'Stamps', 10.27, current_timestamp, '12/01/2021', 'ACCEPTED', 'PLACE_HOLDER');
+VALUES (3, 'Stamps', 10.27, current_timestamp, '12/01/2021', 'APPROVED', 'PLACE_HOLDER');

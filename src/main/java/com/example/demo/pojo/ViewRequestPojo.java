@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 public class ViewRequestPojo {
 
     private int reqID;
+    private int empID;
     private String firstName;
     private String lastName;
     private String description;
@@ -14,14 +15,13 @@ public class ViewRequestPojo {
     private String purchaseDate ;
     private Timestamp requestDate ;
     private RequestStatus status ;
-
-
     private String receiptPic;
 
 
-    public ViewRequestPojo(int reqID, String firstName, String lastName, String description, double cost, String purchaseDate, Timestamp requestDate, RequestStatus status, String receiptPic) {
+    public ViewRequestPojo(int reqID, int empID, String firstName, String lastName, String description, double cost, String purchaseDate, Timestamp requestDate, RequestStatus status, String receiptPic) {
         super();
         this.reqID = reqID;
+        this.empID = empID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.description = description;
@@ -103,6 +103,14 @@ public class ViewRequestPojo {
 
     public void setReceiptPic(String receiptPic) {
         this.receiptPic = receiptPic;
+    }
+
+    public int getEmpID() {
+        return empID;
+    }
+
+    public void setEmpID(int empID) {
+        this.empID = empID;
     }
 
     @Override
