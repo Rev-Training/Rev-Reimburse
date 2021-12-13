@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dao.RequestRepositoryDao;
 import com.example.demo.entity.Request;
 import com.example.demo.entity.User;
+import com.example.demo.enums.RequestStatus;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.RequestPojo;
 import com.example.demo.pojo.UserPojo;
@@ -74,6 +75,19 @@ public class RequestServiceImpl implements RequestService{
     @Override
     public List<RequestPojo> getEmployeeRequests(int empID) throws ApplicationException {
         List<Request> allRequestsEntity = this.requestRepositoryDao.findByEmpID(empID);
+        List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
+        allRequestsEntity.forEach((request) -> {
+            RequestPojo requestPojo = new RequestPojo( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
+                    request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+
+            allRequestsPojo.add(requestPojo);
+        });
+        return allRequestsPojo;
+    }
+
+    @Override
+    public List<RequestPojo> getStatusRequests(RequestStatus requestStatus) throws ApplicationException {
+        List<Request> allRequestsEntity = this.requestRepositoryDao.findByStatus(requestStatus);
         List<RequestPojo> allRequestsPojo = new ArrayList<RequestPojo>();
         allRequestsEntity.forEach((request) -> {
             RequestPojo requestPojo = new RequestPojo( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),

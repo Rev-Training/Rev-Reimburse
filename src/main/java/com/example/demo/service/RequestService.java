@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.enums.RequestStatus;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.RequestPojo;
 
@@ -12,6 +13,8 @@ public interface RequestService {
     List<RequestPojo> getAllRequests() throws ApplicationException;
     RequestPojo getARequest(int reqID) throws ApplicationException;
     List<RequestPojo> getEmployeeRequests(int empID) throws ApplicationException;
+    List<RequestPojo> getStatusRequests(RequestStatus requestStatus) throws ApplicationException;
+
 
     void exitApplication();
 

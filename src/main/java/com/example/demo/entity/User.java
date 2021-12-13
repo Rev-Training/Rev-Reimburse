@@ -1,9 +1,12 @@
 package com.example.demo.entity;
 
+//import com.example.demo.converters.RequestStatusConverter;
+//import com.example.demo.converters.UserTypeConverter;
 import com.example.demo.enums.UserType;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -13,6 +16,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private int userID;
+
+    @OneToMany(mappedBy = "user")
+    private Set<ViewRequest> viewRequests;
 
     @Column(name="username")
     private String username;
@@ -34,6 +40,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name="user_type")
+//    @Convert(converter = UserTypeConverter.class)
     private UserType userType;
 
     @Column(name="user_address")
@@ -41,6 +48,9 @@ public class User {
 
     @Column(name="profile_pic")
     private String profilePic;
+
+    @Column(name="user_removed")
+    private boolean userRemoved;
 
     public User() {
         super();
@@ -57,6 +67,21 @@ public class User {
         this.userType = userType;
         this.userAddress = userAddress;
         this.profilePic = profilePic;
+        this.userRemoved = false;
+    }
+
+    public User(int userID, String username, String userPassword, String firstName, String lastName, Timestamp dateCreated, String userEmail, UserType userType, String userAddress, String profilePic, boolean userRemoved) {
+        this.userID = userID;
+        this.username = username;
+        this.userPassword = userPassword;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateCreated = dateCreated;
+        this.userEmail = userEmail;
+        this.userType = userType;
+        this.userAddress = userAddress;
+        this.profilePic = profilePic;
+        this.userRemoved = userRemoved;
     }
 
     public int getUserID() {
@@ -137,6 +162,14 @@ public class User {
 
     public void setProfilePic(String profilePic) {
         this.profilePic = profilePic;
+    }
+
+    public boolean isUserRemoved() {
+        return userRemoved;
+    }
+
+    public void setUserRemoved(boolean userRemoved) {
+        this.userRemoved = userRemoved;
     }
 
     @Override

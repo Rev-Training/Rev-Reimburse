@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.UserRepositoryDao;
 import com.example.demo.entity.User;
+import com.example.demo.enums.UserType;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.UserPojo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +37,31 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean deleteUser(int userID) throws ApplicationException {
-        return false;
+        User userDeleting = userRepositoryDao.getById(userID);
+        userDeleting.setUserRemoved(true);
+        userRepositoryDao.save(userDeleting);
+        return true;
     }
 
     @Override
     public List<UserPojo> getAllUsers() throws ApplicationException {
-        List<User> allUsersEntity = this.userRepositoryDao.findAll();
+        List<User> allUsersEntity = this.userRepositoryDao.findByUserRemovedIsFalse();
         List<UserPojo> allUsersPojo = new ArrayList<UserPojo>();
 
         allUsersEntity.forEach((user) -> {
-            UserPojo userPojo = new UserPojo(user.getUserID(), user.getUsername(), user.getUserPassword(), user.getFirstName(), user.getLastName(), user.getDateCreated(), user.getUserEmail(), user.getUserType(), user.getUserAddress(), user.getProfilePic());
+            UserPojo userPojo = new UserPojo(user.getUserID(), user.getUsername(), "********", user.getFirstName(), user.getLastName(), user.getDateCreated(), user.getUserEmail(), user.getUserType(), user.getUserAddress(), user.getProfilePic());
+            allUsersPojo.add(userPojo);
+        });
+        return allUsersPojo;
+    }
+
+    @Override
+    public List<UserPojo> getUsersByType(UserType userType) throws ApplicationException {
+        List<User> allUsersEntity = this.userRepositoryDao.findByUserTypeAndUserRemovedIsFalse(userType);
+        List<UserPojo> allUsersPojo = new ArrayList<UserPojo>();
+
+        allUsersEntity.forEach((user) -> {
+            UserPojo userPojo = new UserPojo(user.getUserID(), user.getUsername(), "********", user.getFirstName(), user.getLastName(), user.getDateCreated(), user.getUserEmail(), user.getUserType(), user.getUserAddress(), user.getProfilePic());
             allUsersPojo.add(userPojo);
         });
         return allUsersPojo;

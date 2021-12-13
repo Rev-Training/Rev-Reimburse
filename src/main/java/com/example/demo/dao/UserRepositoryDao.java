@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepositoryDao extends JpaRepository<User, Integer> {
-    List<User> findByUserType(UserType userType);
+    List<User> findByUserTypeAndUserRemovedIsFalse(UserType userType);
+    List<User> findByUserRemovedIsFalse();
     User findByUsernameAndUserPassword(String username, String userPassword);
 }
