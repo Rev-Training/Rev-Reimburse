@@ -1,32 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home/home.component';
-import { UserLoginComponent } from './user/user-login/user-login.component';
-import { UserLogoutComponent } from './user/user-logout/user-logout.component';
-import { UserManagementComponent } from './user/user-management/user-management.component';
-import { UserDetailsComponent } from './user/user-details/user-details.component';
-import { UserInputComponent } from './user/user-input/user-input.component';
-import { RequestDetailsComponent } from './request/request-details/request-details.component';
-import { RequestManagementComponent } from './request/request-management/request-management.component';
-import { RequestInputComponent } from './request/request-input/request-input.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './users/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import {FormsModule} from "@angular/forms";
+import { HomeEmployeeComponent } from './employee/home-employee/home-employee.component';
+import { HomeManagerComponent } from './manager/home-manager/home-manager.component';
+import {SubmitReqComponent} from "./employee/reimburse-reqs/submit-req/submit-req.component";
+import {HttpClientModule} from "@angular/common/http";
+import { ViewReqsComponent } from './employee/reimburse-reqs/view-reqs/view-reqs.component';
+import {EditUserComponent} from "./users/edit-user/edit-user.component";
+import { ViewEmployeeReqsComponent } from './manager/reimburse-reqs/view-employee-reqs/view-employee-reqs.component';
+import {ViewEmployeesComponent} from "./users/view-employees/view-employees.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    UserLoginComponent,
-    UserLogoutComponent,
-    UserManagementComponent,
-    UserDetailsComponent,
-    UserInputComponent,
-    RequestDetailsComponent,
-    RequestManagementComponent,
-    RequestInputComponent
+    LoginComponent,
+    HomeEmployeeComponent,
+    HomeManagerComponent,
+    SubmitReqComponent,
+    ViewReqsComponent,
+    EditUserComponent,
+    ViewEmployeeReqsComponent,
+    ViewEmployeesComponent
   ],
   imports: [
     BrowserModule,
