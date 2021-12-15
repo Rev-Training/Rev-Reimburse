@@ -1,12 +1,3 @@
-// export class Request {
-//   reqID: number = 0;
-//   employeeID: number = 0;
-//   description: string = '';
-//   cost: number = 0.00;
-//   purchaseDate: string = '';
-//   status: string = '';
-//   imageLink: string = '';
-// }
 
 export class ViewRequest {
   reqID: number = 0;
