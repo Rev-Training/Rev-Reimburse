@@ -1,9 +1,18 @@
 export class Request {
-  requestID: number = 0;
-  employeeID: number = 0;
+  reqID: number = 0;
+  empID: number = 0;
   description: string = '';
   cost: number = 0.00;
-  date: string = '';
-  status: string = '';
-  imageLink: string = '';
+  purchaseDate: string = '';
+  requestDate: string = '';
+  status: RequestStatus = RequestStatus.None;
+  receiptPic:string = '';
 }
+
+  export enum RequestStatus {
+    None = "None",
+    PENDING = "PENDING",
+    APPROVED = "APPROVED",
+    DENIED = "DENIED"
+
+  }

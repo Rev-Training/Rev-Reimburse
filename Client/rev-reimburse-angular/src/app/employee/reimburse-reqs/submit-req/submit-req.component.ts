@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../requests.service";
 import {Router} from "@angular/router";
-import {Request} from "../request.model";
+import {Request, RequestStatus} from "../request.model";
 import {AuthService} from "../../../users/auth.service";
+import {MatInputModule} from "@angular/material/input";
+import {MatFormField} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-submit-req',
@@ -12,6 +14,7 @@ import {AuthService} from "../../../users/auth.service";
 export class SubmitReqComponent implements OnInit {
 
   newReq: Request = new Request();
+  picker: any;
 
 
   constructor(private requestsService: RequestService,
@@ -22,8 +25,11 @@ export class SubmitReqComponent implements OnInit {
   }
 
   addRequest() {
-    this.newReq.employeeID = this.authService.retrieveUserID();
-    this.newReq.status = 'pending';
+    this.newReq.empID = this.authService.retrieveUserID();
+    this.newReq.status = RequestStatus.PENDING;
+    this.newReq.purchaseDate = this.picker;
+    console.log(this.picker);
+    console.log(this.newReq);
     this.requestsService.addRequestService(this.newReq).subscribe({
       next: response => {
         this.router.navigate(['home-employee']);

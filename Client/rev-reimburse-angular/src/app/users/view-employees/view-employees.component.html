@@ -51,7 +51,7 @@
           <tbody>
           <tr *ngFor="let emp of allEmployees">
             <td class="warning">{{ emp.userID }}</td>
-            <td class="light">{{ emp.userName}}</td>
+            <td class="light">{{ emp.username}}</td>
             <td class="warning">{{ emp.userAddress}}</td>
             <td class="light">{{ emp.userEmail}}</td>
           </tr>
@@ -61,87 +61,5 @@
     </div>
   </div>
 
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card" style="width: 18rem;">
-        <img src="src\app\images\maleIcon.jpg" class="card-img-top" alt="icon of employee">
-        <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
-      <thead>
-      <tr>
-        <th class="warning">ID</th>
-        <th class="light">Username</th>
-        <th class="warning">Address</th>
-        <th class="light">eMail</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let emp of allEmployees">
-        <td class="warning">{{ emp.userID }}</td>
-        <td class="light">{{ emp.userName}}</td>
-        <td class="warning">{{ emp.userAddress}}</td>
-        <td class="light">{{ emp.userEmail}}</td>
-      </tr>
-      </tbody>
-    </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <img src="src\app\images\femaleIcon.jpg" class="card-img-top" alt="icon of employee">
-      <div class="card-body">
-        <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
-          <thead>
-          <tr>
-            <th class="warning">ID</th>
-            <th class="light">Username</th>
-            <th class="warning">Address</th>
-            <th class="light">eMail</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let emp of allEmployees">
-            <td class="warning">{{ emp.userID }}</td>
-            <td class="light">{{ emp.userName}}</td>
-            <td class="warning">{{ emp.userAddress}}</td>
-            <td class="light">{{ emp.userEmail}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card" style="width: 18rem;">
-        <img src="src\app\images\maleIcon.jpg" class="card-img-top" alt="icon of employee">
-        <!-- all images are in the project image folder, also on bublup -->
-        <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
-          <thead>
-          <tr>
-            <th class="warning">ID</th>
-            <th class="light">Username</th>
-            <th class="warning">Address</th>
-            <th class="light">eMail</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let emp of allEmployees">
-            <td class="warning">{{ emp.userID }}</td>
-            <td class="light">{{ emp.userName}}</td>
-            <td class="warning">{{ emp.userAddress}}</td>
-            <td class="light">{{ emp.userEmail}}</td>
-          </tr>
-          </tbody>
-        </table>      
-      </div>
-    </div>
   </div>
 </div>
