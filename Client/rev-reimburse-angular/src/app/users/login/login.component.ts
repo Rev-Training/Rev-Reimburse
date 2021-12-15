@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../user.model";
+import {Component, OnInit} from '@angular/core';
+import {User, UserType} from "../user.model";
 import {UserService} from "../user.service";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
@@ -28,12 +28,18 @@ export class LoginComponent implements OnInit {
     this.userService.newValidateUser(this.newUser).subscribe({
       next: response => {
         validatedUser = response;
-        if (validatedUser.userType != "") {
+        console.log("user type:" + validatedUser.userType);
+        console.log("user type:" + UserType.EMPLOYEE);
+        console.log(validatedUser.userType == UserType.EMPLOYEE);
+        console.log(validatedUser);
+        if (validatedUser.userType != null) {
           this.authService.storeUser(validatedUser);
         }
-        if(validatedUser.userType == "employee") {
+        if(validatedUser.userType.valueOf() === UserType.EMPLOYEE.valueOf()) {
+          console.log("start inside employee if statement");
           this.router.navigate(['home-employee']);
-        } else if(validatedUser.userType == "manager") {
+          console.log(" end inside employee if statement");
+        } else if(validatedUser.userType.valueOf() === UserType.MANAGER.valueOf()) {
           this.router.navigate(["home-manager"]);
         }
 

@@ -69,6 +69,18 @@ public class User {
         this.profilePic = profilePic;
         this.userRemoved = false;
     }
+    public User(int userID, String username, String userPassword, String firstName, String lastName, String userEmail, UserType userType, String userAddress, String profilePic) {
+        this.userID = userID;
+        this.username = username;
+        this.userPassword = userPassword;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userEmail = userEmail;
+        this.userType = userType;
+        this.userAddress = userAddress;
+        this.profilePic = profilePic;
+        this.userRemoved = false;
+    }
 
     public User(int userID, String username, String userPassword, String firstName, String lastName, Timestamp dateCreated, String userEmail, UserType userType, String userAddress, String profilePic, boolean userRemoved) {
         this.userID = userID;

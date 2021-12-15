@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "./users/auth.service";
 import {Location} from "@angular/common";
+import {UserType} from "./users/user.model";
 
 @Component({
   selector: 'app-root',
@@ -34,9 +35,9 @@ export class AppComponent implements OnInit  {
 
 
   goHome() {
-    if(this.authService.retrieveUserType() == "manager") {
+    if(this.authService.retrieveUserType().valueOf() === UserType.MANAGER.valueOf()) {
       this.router.navigate(["home-manager"]);
-    } else if(this.authService.retrieveUserType() == "employee") {
+    } else if(this.authService.retrieveUserType().valueOf() === UserType.EMPLOYEE.valueOf()) {
       this.router.navigate(["home-employee"]);
     }
   }
