@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.enums.UserType;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.UserPojo;
 import com.example.demo.service.UserService;
@@ -42,9 +43,22 @@ public class UsersController {
     }
 
     @DeleteMapping()
-    boolean deleteUser() throws ApplicationException {
+    boolean deleteUser(@RequestParam int userID) throws ApplicationException {
         //return userService.deleteUser(@RequestParam String username, @RequestParam String password);
-        return false;
+        return userService.deleteUser(userID);
     }
+
+    @GetMapping("/managers")
+    List<UserPojo> getManagers() throws ApplicationException {
+        //return userService.getAllUsers();
+        return userService.getUsersByType(UserType.MANAGER);
+    }
+
+    @GetMapping("/employees")
+    List<UserPojo> getEmployees() throws ApplicationException {
+        //return userService.getAllUsers();
+        return userService.getUsersByType(UserType.EMPLOYEE);
+    }
+
 
 }
