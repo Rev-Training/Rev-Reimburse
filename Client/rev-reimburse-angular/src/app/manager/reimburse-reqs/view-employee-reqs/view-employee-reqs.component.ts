@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../requests.service";
 import {AuthService} from "../../../users/auth.service";
 import {Router} from "@angular/router";
-import {Request} from "../request.model";
+import {Request, RequestStatus} from "../request.model";
 
 @Component({
   selector: 'app-view-employee-reqs',
@@ -43,7 +43,7 @@ export class ViewEmployeeReqsComponent implements OnInit {
 
 
   approveRequest(req: Request) {
-    req.status = 'approved';
+    req.status = RequestStatus.APPROVED;
     this.requestService.updateRequest(req).subscribe({
       next: response => {
         console.log('success');
@@ -56,7 +56,7 @@ export class ViewEmployeeReqsComponent implements OnInit {
   }
 
   denyRequest(req: Request) {
-    req.status = 'denied';
+    req.status = RequestStatus.DENIED;
     this.requestService.updateRequest(req).subscribe({
       next: response => {
         console.log('success');

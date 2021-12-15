@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserPojo addUser(UserPojo user) throws ApplicationException {
-        User newUser = new User(user.getUserID(), user.getUsername(), user.getUserPassword(), user.getFirstName(), user.getLastName(), user.getDateCreated(), user.getUserEmail(), user.getUserType(), user.getUserAddress(), user.getProfilePic());
+        User newUser = new User(user.getUserID(), user.getUsername(), user.getUserPassword(), user.getFirstName(), user.getLastName(), user.getUserEmail(), user.getUserType(), user.getUserAddress(), user.getProfilePic());
         User returnUser = userRepositoryDao.saveAndFlush(newUser);
         user.setUserID(returnUser.getUserID());
         return user;

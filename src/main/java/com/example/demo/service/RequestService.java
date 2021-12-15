@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.enums.RequestStatus;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.RequestPojo;
+import com.example.demo.pojo.ViewRequestPojo;
 
 import java.util.List;
 

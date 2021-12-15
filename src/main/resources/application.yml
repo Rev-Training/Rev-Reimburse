@@ -1,0 +1,25 @@
+cloud:
+  aws:
+    credentials:
+      access-key: AKIA2AUJRS2XJMHYQA6R
+      secret-key: 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
+
+    region:
+      static: us-east-2
+    stack: 
+      auto: false
+
+application:
+  bucket:
+    name: revreimbursebucket
+
+spring:
+  servlet:
+    multipart:
+     enabled: true
+     file-size-threshold: 2MB
+     max-file-size: 5MB
+     max-request-size: 10MB
+
+server:
+  port: 7777

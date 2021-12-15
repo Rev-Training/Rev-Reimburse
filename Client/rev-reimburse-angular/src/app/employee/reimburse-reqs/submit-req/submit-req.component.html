@@ -1,4 +1,3 @@
-<p>submit-req works!</p>
 
 <div>
   <form #addForm="ngForm" class="form-inline tm-5" (submit)="addRequest()">
@@ -15,6 +14,32 @@
     <span
       *ngIf="reqDesc.invalid && reqDesc.touched"
       class="text-danger small">Request description required!</span>
+
+
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label class="form-control mb-2 mr-sm-2">Choose a date</mat-label>-->
+<!--      <input matInput  [matDatepicker]="picker">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker></mat-datepicker>-->
+<!--      &lt;!&ndash; #enddocregion toggle &ndash;&gt;-->
+<!--    </mat-form-field>-->
+    <input
+      [matDatepicker]="basicDatepicker"
+      [(ngModel)]="picker"
+    >
+    <mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #basicDatepicker></mat-datepicker>
+
+    <br>
+
+
+    <span>
+<!--      *ngIf="picker.invalid && picker.touched"-->
+<!--      class="text-danger small">Request Purchase Date required!>-->
+    </span>
+
+
     <label for="reqCost" class="mb-2 mr-sm-2">Cost:</label>
     <input
       type="text"
