@@ -1,12 +1,72 @@
 
 <h2>List of Employees</h2>
+<!----------------------------THUMBNAILS---------------------------->
+<!-- THIS MAKES IMAGE THUMBNAIL SIZE (PUT IN HTML)-->
+<!-- <img src="..." class="img-thumbnail" alt="..."> -->
 
-<div class="card" style="width: 18rem;">
-  <img src="src\app\images\maleIcon.jpg" class="card-img-top" alt="icon of employee">
-  <!-- all images are in the project image folder, also on bublup -->
-  <div class="card-body">
+<!-- USE THIS TO MAKE THUMBNAIL RESPONSIVE (PUT IN CSS)
+.img-thumbnail {
+  max-width: 100%; 
+  height: auto; 
+} 
+-------------------------------------------------------------------->
+<header>
+<!-- COMPANY NAME AND LOGO -->
+  <div class="p-3 mb-2 bg-warning text-light">Rev-Reimburse</div>
+  <a class="Logo">
+    <img src="https://lh3.googleusercontent.com/b8r7mqyChqfGY1Mo5Q4gaYJPFSr93k5J2Ul6R_9leeKDFSEsrwCPQrIeFgNN55igQK34=s101" alt="Rev-Reimburse Logo">
+  </a>
+<!-- DROP DOWN MENU -->  
+  <div class="btn-group">
+  ><button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Manager Menu
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" router-link="/">View Employees</a></li>
+    <li><a class="dropdown-item" router-link="/">View Reimbursement Requests</a></li>
+    <li><a class="dropdown-item" router-link="/">View Reimbursement Status</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" router-link="/">Logout</a></li>
+  </ul>
+</div> 
+</header>
+<!-- This will give two cards in two rows -->
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <img src="src\app\images\maleIcon.jpg" class="card-img-top" alt="icon of employee">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
+          <thead>
+          <tr>
+            <th class="warning">ID</th>
+            <th class="light">Username</th>
+            <th class="warning">Address</th>
+            <th class="light">eMail</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let emp of allEmployees">
+            <td class="warning">{{ emp.userID }}</td>
+            <td class="light">{{ emp.userName}}</td>
+            <td class="warning">{{ emp.userAddress}}</td>
+            <td class="light">{{ emp.userEmail}}</td>
+          </tr>
+          </tbody>
+        </table>
+       </div>
+    </div>
+  </div>
 
-    <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card" style="width: 18rem;">
+        <img src="src\app\images\maleIcon.jpg" class="card-img-top" alt="icon of employee">
+        <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
       <thead>
       <tr>
         <th class="warning">ID</th>
@@ -25,6 +85,63 @@
       </tr>
       </tbody>
     </table>
-    
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <img src="src\app\images\femaleIcon.jpg" class="card-img-top" alt="icon of employee">
+      <div class="card-body">
+        <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
+          <thead>
+          <tr>
+            <th class="warning">ID</th>
+            <th class="light">Username</th>
+            <th class="warning">Address</th>
+            <th class="light">eMail</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let emp of allEmployees">
+            <td class="warning">{{ emp.userID }}</td>
+            <td class="light">{{ emp.userName}}</td>
+            <td class="warning">{{ emp.userAddress}}</td>
+            <td class="light">{{ emp.userEmail}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card" style="width: 18rem;">
+        <img src="src\app\images\maleIcon.jpg" class="card-img-top" alt="icon of employee">
+        <!-- all images are in the project image folder, also on bublup -->
+        <table class="table table-hover">   <!-- Table Style: hover, ALTERNATE: warning(orange), light(white) -->
+          <thead>
+          <tr>
+            <th class="warning">ID</th>
+            <th class="light">Username</th>
+            <th class="warning">Address</th>
+            <th class="light">eMail</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let emp of allEmployees">
+            <td class="warning">{{ emp.userID }}</td>
+            <td class="light">{{ emp.userName}}</td>
+            <td class="warning">{{ emp.userAddress}}</td>
+            <td class="light">{{ emp.userEmail}}</td>
+          </tr>
+          </tbody>
+        </table>      
+      </div>
+    </div>
   </div>
 </div>
