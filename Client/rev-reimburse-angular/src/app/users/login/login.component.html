@@ -3,7 +3,6 @@
 
 <!-- this is to make the company name and logo appear at top of card -->
 
-<body>  
 <!-- this is the header w/ company name and logo -->
   <div class="card mb-3" style="max-width: 18rem;">
     <div class="card-header">Rev-Reimburse</div>
@@ -23,46 +22,35 @@
     </a>
   </div>
 </nav>
-i
 
 
 
 
-    <div class="card-body">     <!-- this starts the body of the card --> 
-      <h5 class="card-title"></h5>
-      <div class="form-group" style="max-width: 18rem;">
-        <label for="userName">Username:</label>
-        <input type="text"
-               class="form-control"
-               id="userName"
-               placeholder="Enter user name"
-               name="userName"
-               [(ngModel)]="newUser.username">
-      </div>
-      <div class="form-group" style="max-width: 18rem;">
-        <label for="pwd">Password:</label>
-        <input type="password"
-               class="form-control"
-               id="pwd"
-               placeholder="Enter password"
-               name="pswd"
-               [(ngModel)]="newUser.userPassword">
-      </div>
 
-<<<<<<< HEAD
-      <form>         <!-- this starts the footer of the card -->
-          <button type="button" class="btn-block btn-warning" (click)="validateLogin()">Login</button>
-          <button type="reset" class="btn-block btn-warning" >Clear</button>
-      </form>
-  
-    </div>
-  </div>
-</body>
-=======
+<div class="card-body">     <!-- this starts the body of the card -->
+<h5 class="card-title"></h5>
+<div class="form-group" style="max-width: 18rem;">
+  <label for="userName">Username:</label>
+  <input type="text"
+         class="form-control"
+         id="userName"
+         placeholder="Enter user name"
+         name="userName"
+         [(ngModel)]="newUser.username">
+</div>
+<div class="form-group" style="max-width: 18rem;">
+  <label for="pwd">Password:</label>
+  <input type="password"
+         class="form-control"
+         id="pwd"
+         placeholder="Enter password"
+         name="pswd"
+         [(ngModel)]="newUser.userPassword">
+</div>
+
 <form>         <!-- this starts the footer of the card -->
   <div class="card-footer">
     <button type="button" class="btn btn-warning mr-5" (click)="validateLogin()">Login</button>
     <button type="reset" class="btn btn-warning">Clear</button>
   </div>
 </form>
->>>>>>> 81decbdfa7a56d1b75dfb77c0a1c92196ffeb582
