@@ -27,7 +27,7 @@ CREATE TABLE requests (
     description VARCHAR(255),
     cost DECIMAL(100, 2) NOT NULL,
     purchase_date VARCHAR(50) NOT NULL,
-    request_date TIMESTAMP DEFAULT CURRENT_DATE,
+    request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status request_statuses NOT NULL,
     receipt_pic VARCHAR(255),
     request_removed boolean DEFAULT false,

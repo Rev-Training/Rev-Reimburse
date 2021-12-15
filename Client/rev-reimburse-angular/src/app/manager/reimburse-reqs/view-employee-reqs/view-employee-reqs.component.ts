@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {RequestService} from "../requests.service";
+import {Component, OnInit} from '@angular/core';
+import {ViewRequestService} from "../requests.service";
 import {AuthService} from "../../../users/auth.service";
 import {Router} from "@angular/router";
-import {Request} from "../request.model";
+import {ViewRequest, RequestStatus} from "../request.model";
 
 @Component({
   selector: 'app-view-employee-reqs',
@@ -11,14 +11,15 @@ import {Request} from "../request.model";
 })
 export class ViewEmployeeReqsComponent implements OnInit {
 
-  allReqs: Request[] = [];
-  filteredReqs: Request[] = [];
+  allReqs: ViewRequest[] = [];
+  selectedReqs: ViewRequest[] = [];
+  filteredReqs: ViewRequest[] = [];
   filterElement: String = '';
   filterQuery: String = '';
 
   errorMsg: string = '';
 
-  constructor(private requestService: RequestService,
+  constructor(private viewRequestService: ViewRequestService,
               private router: Router,
               private authService: AuthService) { }
 
@@ -27,9 +28,11 @@ export class ViewEmployeeReqsComponent implements OnInit {
   }
 
   loadRequests() {
-    this.requestService.getAllReqs().subscribe({
+    this.viewRequestService.getAllReqs().subscribe({
       next: response => {
         this.allReqs = response;
+        this.pendingStatus();
+
       },
       error: error => {
         this.errorMsg = 'something is wrong in loadAllRequests';
@@ -42,9 +45,9 @@ export class ViewEmployeeReqsComponent implements OnInit {
 
 
 
-  approveRequest(req: Request) {
-    req.status = 'approved';
-    this.requestService.updateRequest(req).subscribe({
+  approveRequest(req: ViewRequest) {
+    req.status = RequestStatus.APPROVED;
+    this.viewRequestService.updateRequest(req).subscribe({
       next: response => {
         console.log('success');
       },
@@ -55,9 +58,9 @@ export class ViewEmployeeReqsComponent implements OnInit {
     });
   }
 
-  denyRequest(req: Request) {
-    req.status = 'denied';
-    this.requestService.updateRequest(req).subscribe({
+  denyRequest(req: ViewRequest) {
+    req.status = RequestStatus.DENIED;
+    this.viewRequestService.updateRequest(req).subscribe({
       next: response => {
         console.log('success');
       },
@@ -67,6 +70,17 @@ export class ViewEmployeeReqsComponent implements OnInit {
       }
     });
   }
+
+  pendingStatus() {
+    this.selectedReqs = this.allReqs.filter((element) => element.status == RequestStatus.PENDING)
+  }
+  approvedStatus() {
+    this.selectedReqs = this.allReqs.filter((element) => element.status == RequestStatus.APPROVED)
+  }
+  deniedStatus() {
+    this.selectedReqs = this.allReqs.filter((element) => element.status == RequestStatus.DENIED)
+  }
+
 
 
 }

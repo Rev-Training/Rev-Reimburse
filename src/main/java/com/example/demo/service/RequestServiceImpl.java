@@ -11,6 +11,7 @@ import com.example.demo.enums.RequestStatus;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.RequestPojo;
 import com.example.demo.pojo.UserPojo;
+import com.example.demo.pojo.ViewRequestPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,8 +33,8 @@ public class RequestServiceImpl implements RequestService{
     public RequestPojo addRequest(RequestPojo request) throws ApplicationException {
     	
     	logger.info("Entered addRequest() in service");
-        Request newRequest = new Request(  request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
-                request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+        Request newRequest = new Request(  request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(), 
+                                          request.getStatus(), request.getReceiptPic());
         Request returnRequest = requestRepositoryDao.saveAndFlush(newRequest);
         request.setReqID(returnRequest.getReqID());
     	logger.info("Exited addRequest() in service");

@@ -59,6 +59,17 @@ public class Request {
         this.status = status;
         this.receiptPic = receiptPic;
     }
+    public Request(int reqID, int empID, String description, double cost, String purchaseDate,
+                    RequestStatus status, String receiptPic) {
+        this.reqID = reqID;
+        this.empID = empID;
+        this.description = description;
+        this.cost = cost;
+        this.purchaseDate = purchaseDate;
+        this.requestDate = requestDate;
+        this.status = status;
+        this.receiptPic = receiptPic;
+    }
 
     public int getReqID() {
         return reqID;

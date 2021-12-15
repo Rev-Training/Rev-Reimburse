@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Request} from "../request.model";
+import {Component, OnInit} from '@angular/core';
+import {Request, RequestStatus} from "../request.model";
 import {RequestService} from "../requests.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../users/auth.service";
@@ -12,6 +12,10 @@ import {AuthService} from "../../../users/auth.service";
 export class ViewReqsComponent implements OnInit {
 
   allReqs: Request[] = [];
+  pendingReqs: Request[] = [];
+  approvedReqs: Request[] = [];
+  deniedReqs: Request[] = [];
+  selectedReqs: Request[] = [];
 
   errorMsg: string = '';
 
@@ -23,10 +27,15 @@ export class ViewReqsComponent implements OnInit {
     this.loadRequests();
   }
 
+
+
   loadRequests() {
     this.requestService.getAllEmpReqs(this.authService.retrieveUserID()).subscribe({
       next: response => {
         this.allReqs = response;
+        this.pendingStatus()
+        console.log(this.allReqs);
+
       },
       error: error => {
         this.errorMsg = 'something is wrong in loadAllRequests';
@@ -34,5 +43,21 @@ export class ViewReqsComponent implements OnInit {
       }
     });
   }
+
+  pendingStatus() {
+    this.selectedReqs = this.allReqs.filter((element) => element.status == RequestStatus.PENDING)
+  }
+  approvedStatus() {
+    this.selectedReqs = this.allReqs.filter((element) => element.status == RequestStatus.APPROVED)
+  }
+  deniedStatus() {
+    this.selectedReqs = this.allReqs.filter((element) => element.status == RequestStatus.DENIED)
+  }
+
+  // viewDifferentStatus() {
+  //
+  // }
+
+
 
 }
