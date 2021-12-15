@@ -1,13 +1,10 @@
 
-<div class="container mb-5">
-  <h2>User Edit Form</h2>
-  <div class="card mt-5">
     <form #myForm="ngForm" (submit)="updateUser()">
       <div class="card-header bg-warning">EDIT USER DETAILS</div>
       <div class="card-body">
 
         <div class="form-group">
-          <label for="username">Username :</label>
+          <label for="userID">User ID :</label>
           <!-- replaced text box for book id with the data being
               display directly using string interpolation on the page
               so that the user cannot update the primary key-->
@@ -20,7 +17,7 @@
                    name="username"
                    #username="ngModel"
                    required
-                   [(ngModel)]="updatedUser.userName">
+                   [(ngModel)]="updatedUser.username">
             <div
               *ngIf='username.invalid'
               class="text-danger small" >
@@ -63,5 +60,3 @@
         </div>
       </div>
     </form>
-  </div>
-</div>

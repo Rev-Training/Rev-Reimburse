@@ -15,14 +15,14 @@
   </tr>
   </thead>
     <tr *ngFor="let req of allReqs">
-      <td class="table-warning">{{ req.requestID }}</td>
-      <td class="table-light">{{ req.employeeID }}</td>
+      <td class="table-warning">{{ req.reqID }}</td>
+      <td class="table-light">{{ req.empID }}</td>
       <td class="table-warning">{{ req.description}}</td>
       <td class="table-light">{{ req.cost}}</td>
-      <td class="table-warning">{{ req.date}}</td>
+      <td class="table-warning">{{ req.purchaseDate}}</td>
       <td class="table-light">{{ req.status}}</td>
       <!--    <td><img [src]="req.bookImage" height="50px" width="80px"/></td>-->
-      <td>{{ req.imageLink }}</td>
+<!--      <td>{{ req.imageLink }}</td>-->
 
       <td>
         <button

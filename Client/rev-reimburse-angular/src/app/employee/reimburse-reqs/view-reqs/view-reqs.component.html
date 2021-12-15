@@ -1,3 +1,24 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">Logo</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <button type="button" class="btn btn-primary" (click)="pendingStatus()">Pending</button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn btn-primary" (click)="deniedStatus()">Denied</button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn btn-primary" (click)="approvedStatus()">Approved</button>
+    </li>
+  </ul>
+</nav>
+
+
+
+
 <p>view-reqs works!</p>
 
 <h2>List of Requests</h2>
@@ -14,11 +35,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let req of allReqs">
-    <td class="table-warning">{{ req.requestID }}</td>
+  <tr *ngFor="let req of selectedReqs">
+    <td class="table-warning">{{ req.reqID }}</td>
     <td class="table-light">{{ req.description}}</td>
     <td class="table-warning">{{ req.cost}}</td>
-    <td class="table-light">{{ req.date}}</td>
+    <td class="table-light">{{ req.purchaseDate}}</td>
     <td class="table-warning">{{ req.status}}</td>
     <!--    <td><img [src]="req.bookImage" height="50px" width="80px"/></td>-->
   </tr>

@@ -24,8 +24,8 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public RequestPojo addRequest(RequestPojo request) throws ApplicationException {
-        Request newRequest = new Request(  request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
-                request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+        Request newRequest = new Request(  request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate()
+                , request.getStatus(), request.getReceiptPic());
         Request returnRequest = requestRepositoryDao.saveAndFlush(newRequest);
         request.setReqID(returnRequest.getReqID());
         return request;

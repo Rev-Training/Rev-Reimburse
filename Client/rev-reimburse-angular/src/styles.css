@@ -1,9 +1,12 @@
 /* This is adding a linear gradient orange color for the background - every page */
-body {  
+body {
+    align-content: center;
+
     background: linear-gradient(to left top, red, yellow)fixed;
     height: stretch;
-    background-size: cover; 
-    background-repeat: no-repeat;           
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
 }
 
 /* this will style the cards the same on every page */
@@ -11,7 +14,7 @@ body {
     background-color: #fff;
     color: coral;
     margin-top: 5em;
-    margin-left: 5em;
+    margin-left: 10em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,5 +22,5 @@ body {
     min-height: 30vh;
     border-width: 10px;
     border-radius: 10%;
-    border-color:coral; 
+    border-color:coral;
 }
