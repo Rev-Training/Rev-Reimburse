@@ -2,7 +2,9 @@
 <!-- <div class="p-3 mb-2 bg-warning text-dark">Rev-Reimburse</div> -->
 
 <!-- this is to make the company name and logo appear at top of card -->
-<body>
+
+<body>  
+<!-- this is the header w/ company name and logo -->
   <div class="card mb-3" style="max-width: 18rem;">
     <div class="card-header">Rev-Reimburse</div>
 
@@ -36,20 +38,10 @@
       </div>
 
       <form>         <!-- this starts the footer of the card -->
-        <div class="card-footer">
-          <button type="button" class="btn btn-warning mr-5" (click)="validateLogin()">Login</button>
-          <button type="reset" class="btn btn-warning">Clear</button>
-        </div>
+          <button type="button" class="btn-block btn-warning" (click)="validateLogin()">Login</button>
+          <button type="reset" class="btn-block btn-warning" >Clear</button>
       </form>
   
     </div>
   </div>
 </body>
-
-<!--  Scrolling from top to bottom. --> <!--
-
-<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div>
-</cdk-virtual-scroll-viewport>
-
--->

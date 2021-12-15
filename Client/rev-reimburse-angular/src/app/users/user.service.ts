@@ -47,7 +47,7 @@ export class UserService {
     // consume endpoint to validate the user
     return this.http.get<User>(this.baseUrl + '/login', {
       params: {
-        userName: user.userName,
+        username: user.userName,
         password: user.userPassword
       }
     });
