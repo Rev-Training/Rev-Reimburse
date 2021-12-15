@@ -7,6 +7,7 @@ import com.example.demo.enums.RequestStatus;
 import com.example.demo.exception.ApplicationException;
 import com.example.demo.pojo.RequestPojo;
 import com.example.demo.pojo.UserPojo;
+import com.example.demo.pojo.ViewRequestPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,10 +34,10 @@ public class RequestServiceImpl implements RequestService{
 
     @Override
     public RequestPojo updateRequest(RequestPojo request) throws ApplicationException {
-        Request updateRequest = new Request( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
-                request.getRequestDate(), request.getStatus(), request.getReceiptPic());
-        Request returnRequest = requestRepositoryDao.save(updateRequest);
-        return request;
+//        Request updateRequest = new Request( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
+//                request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+//        Request returnRequest = requestRepositoryDao.save(updateRequest);
+        return null;
     }
 
     @Override

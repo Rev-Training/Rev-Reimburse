@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.dao.RequestRepositoryDao;
 import com.example.demo.dao.ViewRequestRepositoryDao;
+import com.example.demo.entity.Request;
 import com.example.demo.entity.ViewRequest;
 import com.example.demo.enums.RequestStatus;
 import com.example.demo.exception.ApplicationException;
@@ -18,6 +20,8 @@ public class ViewRequestServiceImpl implements ViewRequestService{
 
     @Autowired
     ViewRequestRepositoryDao viewRequestRepositoryDao;
+    @Autowired
+    RequestRepositoryDao requestRepositoryDao;
 
     private List<ViewRequestPojo> getViewRequestPojos(List<ViewRequest> allViewRequestsEntity) {
         List<ViewRequestPojo> allViewRequestsPojo = new ArrayList<ViewRequestPojo>();
@@ -34,7 +38,10 @@ public class ViewRequestServiceImpl implements ViewRequestService{
 
     @Override
     public ViewRequestPojo updateRequest(ViewRequestPojo request) throws ApplicationException {
-        return null;
+        Request updateRequest = new Request( request.getReqID(), request.getEmpID(), request.getDescription(), request.getCost(), request.getPurchaseDate(),
+                request.getRequestDate(), request.getStatus(), request.getReceiptPic());
+        Request returnRequest = requestRepositoryDao.save(updateRequest);
+        return request;
     }
 
     @Override
