@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -29,7 +29,7 @@ import {MaterialExampleModule} from "./material/material.module";
     ViewReqsComponent,
     EditUserComponent,
     ViewEmployeeReqsComponent,
-    ViewEmployeesComponent
+    ViewEmployeesComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,7 @@
 <!-- <div class="p-3 mb-2 bg-warning text-dark">Rev-Reimburse</div> -->
 
 <!-- this is to make the company name and logo appear at top of card -->
-
-<body>  
-<!-- this is the header w/ company name and logo -->
+<body>
   <div class="card mb-3" style="max-width: 18rem;">
     <div class="card-header">Rev-Reimburse</div>
 
@@ -16,18 +14,6 @@
       </div>
     </nav>
 
-<nav class="navbar navbar-light bg-light">
-  <div class="container">
-    <a class="Logo" href="#">
-      <img src="https://lh3.googleusercontent.com/b8r7mqyChqfGY1Mo5Q4gaYJPFSr93k5J2Ul6R_9leeKDFSEsrwCPQrIeFgNN55igQK34=s101" alt="Rev-Reimburse Logo">
-    </a>
-  </div>
-</nav>
-i
-
-
-
-
     <div class="card-body">     <!-- this starts the body of the card --> 
       <h5 class="card-title"></h5>
       <div class="form-group" style="max-width: 18rem;">
@@ -37,7 +23,7 @@ i
                id="userName"
                placeholder="Enter user name"
                name="userName"
-               [(ngModel)]="newUser.username">
+               [(ngModel)]="newUser.userName">
       </div>
       <div class="form-group" style="max-width: 18rem;">
         <label for="pwd">Password:</label>
@@ -49,20 +35,21 @@ i
                [(ngModel)]="newUser.userPassword">
       </div>
 
-<<<<<<< HEAD
       <form>         <!-- this starts the footer of the card -->
-          <button type="button" class="btn-block btn-warning" (click)="validateLogin()">Login</button>
-          <button type="reset" class="btn-block btn-warning" >Clear</button>
+        <div class="card-footer">
+          <button type="button" class="btn btn-warning mr-5" (click)="validateLogin()">Login</button>
+          <button type="reset" class="btn btn-warning">Clear</button>
+        </div>
       </form>
   
     </div>
   </div>
 </body>
-=======
-<form>         <!-- this starts the footer of the card -->
-  <div class="card-footer">
-    <button type="button" class="btn btn-warning mr-5" (click)="validateLogin()">Login</button>
-    <button type="reset" class="btn btn-warning">Clear</button>
-  </div>
-</form>
->>>>>>> 81decbdfa7a56d1b75dfb77c0a1c92196ffeb582
+
+<!--  Scrolling from top to bottom. --> <!--
+
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div>
+</cdk-virtual-scroll-viewport>
+
+-->
