@@ -8,9 +8,11 @@
 //   imageLink: string = '';
 // }
 
-export class Request {
+export class ViewRequest {
   reqID: number = 0;
   empID: number = 0;
+  firstName: string = '';
+  lastName: string = '';
   description: string = '';
   cost: number = 0.00;
   purchaseDate: string = '';
