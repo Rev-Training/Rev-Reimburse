@@ -69,47 +69,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.vladmihalcea</groupId>
-			<artifactId>hibernate-types-52</artifactId>
-			<version>2.14.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.common</groupId>
-			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>5.1.2.Final</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
-<dependency>
-    <groupId>com.amazonaws</groupId>
-    <artifactId>aws-java-sdk-s3</artifactId>
-    <version>1.12.129</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-web</artifactId>
-    <version>5.3.13</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/aws.sdk.kotlin/aws-core-jvm -->
-<dependency>
-    <groupId>aws.sdk.kotlin</groupId>
-    <artifactId>aws-core-jvm</artifactId>
-    <version>0.9.5-beta</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core -->
-<dependency>
-    <groupId>com.amazonaws</groupId>
-    <artifactId>aws-java-sdk-core</artifactId>
-    <version>1.12.129</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-context -->
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-context</artifactId>
-    <version>3.1.0</version>
-</dependency>
-
 
 	</dependencies>
 
