@@ -1,0 +1,9 @@
+div.card-body {
+    /* the below puts the card in the center */
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    /* the below will allow scrolling w/in div/class/card even when max_height is exceeded. */
+    max-height: 75%;
+    overflow-y:auto;
+}
