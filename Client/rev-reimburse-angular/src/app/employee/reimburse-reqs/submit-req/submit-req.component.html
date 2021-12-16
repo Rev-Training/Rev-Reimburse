@@ -47,6 +47,16 @@
       #reqCost="ngModel"
       [(ngModel)]="newReq.cost">
     <span *ngIf="reqCost.invalid && reqCost.touched" class="text-danger small">Request cost required!</span>
+
+    <label class="image-upload-container btn btn-bwm">
+      <span>Select Image</span>
+      <input #imageInput
+             type="file"
+             accept="image/*"
+             (change)="uploadImage(imageInput)">
+    </label>
+
+
     <button
       type="submit"
       [disabled]="!addForm.valid"

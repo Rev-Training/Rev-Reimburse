@@ -23,9 +23,11 @@ public class StorageController {
 	private StorageService service;
 	
 	// http://localhost:7777/file/upload
-	@PostMapping("/upload")
+	@PostMapping(value = "/upload", produces = "application/json")
 	public ResponseEntity<String> uploadFile(@RequestParam(value = "file")MultipartFile file) {
-		return new ResponseEntity <> (service.uploadFile(file), HttpStatus.OK);
+		return ResponseEntity.ok()
+				.header("Content-type", "application/json")
+				.body("\"" + service.uploadFile(file) + "\"");
 	}
 	
 	
