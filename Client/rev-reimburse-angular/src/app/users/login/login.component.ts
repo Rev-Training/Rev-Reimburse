@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User, UserType} from "../user.model";
-import {UserService} from "../user.service";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {UsersService} from "../users.service";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   errMsg: String = '';
 
-  constructor(private userService: UserService,
+  constructor(private usersService: UsersService,
               private authService: AuthService,
               private router: Router) { }
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   validateLogin() {
     let validatedUser: User;
 
-    this.userService.newValidateUser(this.newUser).subscribe({
+    this.usersService.newValidateUser(this.newUser).subscribe({
       next: response => {
         validatedUser = response;
         console.log("user type:" + validatedUser.userType);
@@ -35,14 +35,13 @@ export class LoginComponent implements OnInit {
         if (validatedUser.userType != null) {
           this.authService.storeUser(validatedUser);
         }
-        if(validatedUser.userType.valueOf() === UserType.EMPLOYEE.valueOf()) {
-          console.log("start inside employee if statement");
-          this.router.navigate(['home-employee']);
-          console.log(" end inside employee if statement");
-        } else if(validatedUser.userType.valueOf() === UserType.MANAGER.valueOf()) {
-          this.router.navigate(["home-manager"]);
+        if(validatedUser.userType.valueOf() != UserType.None.valueOf()) {
+          console.log("start inside home if statement");
+          this.router.navigate(['home']);
+          console.log(" end inside home if statement");
+        } else{
+          console.log("User type not found");
         }
-
       },
       error: err => {
         this.errMsg = 'Error in Validate Login';

@@ -1,18 +1,6 @@
-<!-- this would put a header on the top of the page - we are NOT using this option, here for your reference -->
-<!-- <div class="p-3 mb-2 bg-warning text-dark">Rev-Reimburse</div> -->
+<div id="login">
+  <div class="card-header">Rev-Reimburse</div>
 
-<!-- this is to make the company name and logo appear at top of card -->
-
-<!-- this is the header w/ company name and logo -->
-<div class="card-header">Rev-Reimburse</div>
-
-<nav class="navbar navbar-light bg-light">
-  <div class="container">
-    <a class="Logo" href="#">
-      <img src="https://lh3.googleusercontent.com/b8r7mqyChqfGY1Mo5Q4gaYJPFSr93k5J2Ul6R_9leeKDFSEsrwCPQrIeFgNN55igQK34=s101" alt="Rev-Reimburse Logo">
-    </a>
-  </div>
-</nav>
 
   <nav class="navbar navbar-light bg-light">
     <div class="container">
@@ -26,30 +14,31 @@
 
 
 
-<!--<div class="card-body">     &lt;!&ndash; this starts the body of the card &ndash;&gt;-->
-<h5 class="card-title"></h5>
-<div class="form-group" style="max-width: 18rem;">
-  <label for="userName">Username:</label>
-  <input type="text"
-         class="form-control"
-         id="userName"
-         placeholder="Enter user name"
-         name="userName"
-         [(ngModel)]="newUser.username">
-</div>
-<div class="form-group" style="max-width: 18rem;">
-  <label for="pwd">Password:</label>
-  <input type="password"
-         class="form-control"
-         id="pwd"
-         placeholder="Enter password"
-         name="pswd"
-         [(ngModel)]="newUser.userPassword">
-</div>
-
-<form>         <!-- this starts the footer of the card -->
-  <div class="card-footer">
-    <button type="button" class="btn btn-warning mr-5" (click)="validateLogin()">Login</button>
-    <button type="reset" class="btn btn-warning">Clear</button>
+  <h5 class="card-title"></h5>
+  <div class="form-group" style="max-width: 18rem;">
+    <label for="userName">Username:</label>
+    <input type="text"
+           class="form-control"
+           id="userName"
+           placeholder="Enter user name"
+           name="userName"
+           [(ngModel)]="newUser.username">
   </div>
-</form>
+  <div class="form-group" style="max-width: 18rem;">
+    <label for="pwd">Password:</label>
+    <input type="password"
+           class="form-control"
+           id="pwd"
+           placeholder="Enter password"
+           name="pswd"
+           [(ngModel)]="newUser.userPassword">
+  </div>
+
+  <form>         <!-- this starts the footer of the card -->
+    <div class="card-footer">
+      <button type="button" class="btn btn-warning mr-5" (click)="validateLogin()">Login</button>
+      <button type="reset" class="btn btn-warning">Clear</button>
+    </div>
+  </form>
+
+</div>

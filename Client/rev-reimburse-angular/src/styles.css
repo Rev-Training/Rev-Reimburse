@@ -1,26 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
 /* This is adding a linear gradient orange color for the background - every page */
-body {
-    align-content: center;
-
-    background: linear-gradient(to left top, red, yellow)fixed;
-    height: stretch;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: auto;
+html, body {
+  height: 100%;
 }
+
+html {
+  display: table;
+  margin: auto;
+}
+
+
+
+body {
+  align-content: center;
+  background: linear-gradient(to left top, red, yellow)fixed;
+  height: stretch;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: auto;
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+
+  /*width: 960px; margin: 0 auto;*/
+}
+
 
 /* this will style the cards the same on every page */
-.card{
-    background-color: #fff;
-    color: coral;
-    margin-top: 5em;
-    margin-left: 10em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 30vh;
-    border-width: 10px;
-    border-radius: 10%;
-    border-color:coral;
-}

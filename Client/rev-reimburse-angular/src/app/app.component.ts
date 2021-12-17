@@ -17,7 +17,7 @@ export class AppComponent implements OnInit  {
               private authService: AuthService,
               private location: Location) {
     router.events.subscribe(val => {
-      if (location.path() == "" || location.path() == "/home-employee" || location.path() == "/home-manager" ) {
+      if (location.path() == "" || location.path() == "/home" ) {
         this.inHome = true;
       } else {
         this.inHome = false;

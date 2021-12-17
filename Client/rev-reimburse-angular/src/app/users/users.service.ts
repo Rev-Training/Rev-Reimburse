@@ -3,13 +3,12 @@ import {User} from "./user.model";
 import {HttpClient} from "@angular/common/http";
 import { Observable } from 'rxjs';
 
-import {Request} from "../employee/reimburse-reqs/request.model";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserService {
+export class UsersService {
 
   baseUrl = "/api/users";
 
@@ -25,23 +24,6 @@ export class UserService {
   }
 
 
-  // validateUser(user: User){
-  //   // consume endpoint to validate the user
-  //   if(user.username == "Sam" && user.userPassword == "admin"){
-  //     user.userID = 1;
-  //     user.username = "Sam";
-  //     user.userType = "manager";
-  //     user.userAddress = "Atlanta";
-  //     user.userEmail = "ox1@g.com"
-  //   } else if(user.username == "Priya" && user.userPassword == "emp"){
-  //     user.userID = 2;
-  //     user.username = "Priya";
-  //     user.userType = "employee";
-  //     user.userAddress = "Marietta";
-  //     user.userEmail = "ox2@g.com"
-  //   }
-  //   return user;
-  // }
 
   newValidateUser(user: User): Observable<User>{
     // consume endpoint to validate the user
