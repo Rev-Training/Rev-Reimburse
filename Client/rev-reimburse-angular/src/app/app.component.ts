@@ -17,7 +17,7 @@ export class AppComponent implements OnInit  {
               private authService: AuthService,
               private location: Location) {
     router.events.subscribe(val => {
-      if (location.path() == "" || location.path() == "/home-employee" || location.path() == "/home-manager" ) {
+      if (location.path() == "" || location.path() == "/home" ) {
         this.inHome = true;
       } else {
         this.inHome = false;
@@ -36,9 +36,9 @@ export class AppComponent implements OnInit  {
 
   goHome() {
     if(this.authService.retrieveUserType().valueOf() === UserType.MANAGER.valueOf()) {
-      this.router.navigate(["home-manager"]);
-    } else if(this.authService.retrieveUserType().valueOf() === UserType.EMPLOYEE.valueOf()) {
-      this.router.navigate(["home-employee"]);
+      this.router.navigate(["home"]);
+    } else if(this.authService.retrieveUserType().valueOf() === UserType.EMPLOYEE.valueOf() || this.authService.retrieveUserType().valueOf() === UserType.ADMIN.valueOf()) {
+      this.router.navigate(["home"]);
     }
   }
 }

@@ -1,15 +1,5 @@
-
-<!-- this would put a header on the top of the page - we are NOT using this option, here for your reference -->
-<!-- <div class="p-3 mb-2 bg-warning text-dark">Rev-Reimburse</div> -->
-
-<!-- this is to make the company name and logo appear at top of card -->
-<div class="card mb-3" style="max-width: 18rem;">
-  <div class="card-header">Rev-Reimburse</div>
-
-
-
-  <div class="card-body">     <!-- this starts the body of the card -->
-    <button *ngIf="!inHome" type="button" class="btn btn-primary" (click)="goHome()">Home</button>
-    <router-outlet></router-outlet>
-  </div>
+<div class="card">
+<!--    <button *ngIf="!inHome" type="button" class="btn btn-primary" (click)="goHome()">Home</button>-->
+  <button *ngIf="!inHome" type="button" class="btn btn-primary" (click)="goHome()">Home</button>
+  <router-outlet></router-outlet>
 </div>

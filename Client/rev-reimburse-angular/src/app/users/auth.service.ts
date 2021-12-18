@@ -10,15 +10,23 @@ export class AuthService {
 
   storeUser(user: User) {
     sessionStorage.setItem("userData", JSON.stringify(user));
+    console.log("inside store User");
+    console.log(user);
+    let data: any = sessionStorage.getItem("userData");
+    let rUser: User = JSON.parse(data == null ?  '' : data);
+    console.log(rUser);
     this.isLoggedIn = true;
   }
 
-  retrieveUser(): User {
+  retrieveUser() {
+    console.log("In retireve");
     let data: any = sessionStorage.getItem("userData");
-    let fetchedUser: User =  JSON.parse(data == null ?  '' : data);
+    console.log("data: ");
+    console.log(data);
+    let user: User = JSON.parse(data == null ?  '' : data);
+    console.log(user);
     this.isLoggedIn = data; //Will be converted to true/false based on if data was null or not
-    return fetchedUser;
-
+    return user;
 
   }
 
@@ -37,6 +45,14 @@ export class AuthService {
     let data: any = sessionStorage.getItem("userData");
     let user: User = JSON.parse(data == null ?  '' : data);
     return user.userID;
+  }
+
+  retrieveUserPic() {
+    let data: any = sessionStorage.getItem("userData");
+    let user: User = JSON.parse(data == null ?  '' : data);
+    console.log(user.profilePic);
+    return user.profilePic;
+
   }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../user.service";
 import {User} from "../user.model";
+import {UsersService} from "../users.service";
 
 @Component({
   selector: 'app-view-users',
@@ -12,7 +12,7 @@ export class ViewEmployeesComponent implements OnInit {
   allEmployees: User[]= [];
   errorMsg: string = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
     this.getAllEmployees();

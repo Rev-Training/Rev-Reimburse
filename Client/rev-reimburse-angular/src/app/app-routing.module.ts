@@ -1,30 +1,31 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "./users/login/login.component";
-import {HomeManagerComponent} from "./manager/home-manager/home-manager.component";
-import {HomeEmployeeComponent} from "./employee/home-employee/home-employee.component";
-import {SubmitReqComponent} from "./employee/reimburse-reqs/submit-req/submit-req.component";
+import { RouterModule, Routes } from '@angular/router';
+import {CommonModule} from "@angular/common";
 import {AdminGuard} from "./users/admin.guard";
-import {ViewReqsComponent} from "./employee/reimburse-reqs/view-reqs/view-reqs.component";
-import {EditUserComponent} from "./users/edit-user/edit-user.component";
-import {ViewEmployeeReqsComponent} from "./manager/reimburse-reqs/view-employee-reqs/view-employee-reqs.component";
+import {LoginComponent} from "./users/login/login.component";
+import {HomeComponent} from "./users/home/home.component";
+import {SubmitReqComponent} from "./requests/submit-req/submit-req.component";
+import {ViewMyRequestsComponent} from "./requests/view-my-requests/view-my-requests.component";
+import {ViewEmployeeRequestsComponent} from "./requests/view-employee-requests/view-employee-requests.component";
+import {CreateNewUserComponent} from "./users/create-new-user/create-new-user.component";
+import {EditProfileComponent} from "./users/edit-profile/edit-profile.component";
 import {ViewEmployeesComponent} from "./users/view-employees/view-employees.component";
 
-const routes: Routes= [
+const routes: Routes = [
   {path:'', component: LoginComponent},
-  {path:'home-manager', component: HomeManagerComponent, canActivate: [AdminGuard]},
-  {path:'home-employee', component: HomeEmployeeComponent, canActivate: [AdminGuard]},
-  {path:'submit-req', component: SubmitReqComponent, canActivate: [AdminGuard]},
-  {path:'edit-user', component: EditUserComponent, canActivate: [AdminGuard]},
-  {path:'view-reqs', component: ViewReqsComponent, canActivate: [AdminGuard]},
-  {path:'view-employees', component: ViewEmployeesComponent, canActivate: [AdminGuard]},
-  {path:'view-employee-reqs', component: ViewEmployeeReqsComponent, canActivate: [AdminGuard]}
-
-]
+  {path:'home', component: HomeComponent},
+  {path:'submit-request', component: SubmitReqComponent},
+  {path:'view-my-requests', component: ViewMyRequestsComponent},
+  // {path:'view-my-requests/:empID', component: ViewMyRequestsComponent},
+  {path:'view-employee-requests', component: ViewEmployeeRequestsComponent},
+  {path:'view-employees', component: ViewEmployeesComponent},
+  {path:'create-new-user', component: CreateNewUserComponent},
+  {path:'edit-profile', component: EditProfileComponent}
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
