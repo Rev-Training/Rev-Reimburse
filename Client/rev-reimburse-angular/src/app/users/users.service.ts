@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from "./user.model";
 import {HttpClient} from "@angular/common/http";
 import { Observable } from 'rxjs';
+import {ViewRequest} from "../requests/view-request.model";
 
 
 @Injectable({
@@ -23,6 +24,9 @@ export class UsersService {
     return this.http.put<User>(this.baseUrl, user);
   }
 
+  addNewUser(user: User): Observable<User>{
+    return this.http.post<User>(this.baseUrl, user);
+  }
 
 
   newValidateUser(user: User): Observable<User>{

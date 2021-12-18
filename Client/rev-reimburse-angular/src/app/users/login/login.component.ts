@@ -32,11 +32,10 @@ export class LoginComponent implements OnInit {
         console.log("user type:" + UserType.EMPLOYEE);
         console.log(validatedUser.userType == UserType.EMPLOYEE);
         console.log(validatedUser);
-        if (validatedUser.userType != null) {
-          this.authService.storeUser(validatedUser);
-        }
+        this.authService.storeUser(validatedUser);
         if(validatedUser.userType.valueOf() != UserType.None.valueOf()) {
-          console.log("start inside home if statement");
+          console.log("start " +
+            "inside home if statement");
           this.router.navigate(['home']);
           console.log(" end inside home if statement");
         } else{

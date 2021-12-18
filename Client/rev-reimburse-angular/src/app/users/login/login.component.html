@@ -1,44 +1,57 @@
+
+
 <div id="login">
-  <div class="card-header">Rev-Reimburse</div>
+  <div class="card-header card-elemento">Rev-Reimburse</div>
+<ul>
+  <li>
+    <div class="card-header card-elemento">Rev-Reimburse</div>
+  </li>
+  <li>
+    <nav class="navbar navbar-light bg-light card-elemento">
+      <div class="container">
+        <a class="Logo" href="#">
+          <img src="https://lh3.googleusercontent.com/b8r7mqyChqfGY1Mo5Q4gaYJPFSr93k5J2Ul6R_9leeKDFSEsrwCPQrIeFgNN55igQK34=s101" alt="Rev-Reimburse Logo">
+        </a>
+      </div>
+    </nav>
+  </li>
 
-
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="Logo" href="#">
-        <img src="https://lh3.googleusercontent.com/b8r7mqyChqfGY1Mo5Q4gaYJPFSr93k5J2Ul6R_9leeKDFSEsrwCPQrIeFgNN55igQK34=s101" alt="Rev-Reimburse Logo">
-      </a>
+  <li>
+    <h5 class="card-title card-elemento"></h5>
+    <div class="form-group card-elemento" style="max-width: 18rem;">
+      <label class="card-elemento" for="userName">Username:</label>
+      <input type="text"
+             class="form-control card-elemento"
+             id="userName"
+             placeholder="Enter user name"
+             name="userName"
+             [(ngModel)]="newUser.username">
     </div>
-  </nav>
 
+  </li>
 
+  <li>
+    <div class="form-group card-elemento" style="max-width: 18rem;">
+      <label for="pwd">Password:</label>
+      <input type="password"
+             class="form-control"
+             id="pwd"
+             placeholder="Enter password"
+             name="pswd"
+             [(ngModel)]="newUser.userPassword">
+    </div>
 
-
-
-  <h5 class="card-title"></h5>
-  <div class="form-group" style="max-width: 18rem;">
-    <label for="userName">Username:</label>
-    <input type="text"
-           class="form-control"
-           id="userName"
-           placeholder="Enter user name"
-           name="userName"
-           [(ngModel)]="newUser.username">
-  </div>
-  <div class="form-group" style="max-width: 18rem;">
-    <label for="pwd">Password:</label>
-    <input type="password"
-           class="form-control"
-           id="pwd"
-           placeholder="Enter password"
-           name="pswd"
-           [(ngModel)]="newUser.userPassword">
-  </div>
-
+  </li>
   <form>         <!-- this starts the footer of the card -->
-    <div class="card-footer">
+    <div class="card-footer card-elemento">
       <button type="button" class="btn btn-warning mr-5" (click)="validateLogin()">Login</button>
       <button type="reset" class="btn btn-warning">Clear</button>
     </div>
   </form>
+
+</ul>
+
+
+
 
 </div>

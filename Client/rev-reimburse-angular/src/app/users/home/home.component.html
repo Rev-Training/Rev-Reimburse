@@ -1,1 +1,52 @@
-<p>home works!</p>
+<div id="home-page">
+  <img id="myImg" [src]="retrieveUserPhoto()" height="50px" width="80px">
+  <ul class="flex-container wrap">
+<!--    <div >-->
+<!--      <li *ngIf="retrieveUserType() === 'EMPLOYEE'" class="flex-item">1</li>-->
+    <li class="flex-item" *ngIf="retrieveUserType() === 'EMPLOYEE'">
+      <a class="nav-link" routerLink="/submit-request">
+        <h5 class="card-title">Submit your Requests</h5>
+      </a>
+    </li>
+    <li class="flex-item" *ngIf="retrieveUserType() === 'EMPLOYEE'">
+      <a class="nav-link" routerLink="/view-my-requests">
+        <h5 class="card-title">View your Requests</h5>
+      </a>
+    </li >
+    <li class="flex-item" *ngIf="retrieveUserType() === 'MANAGER' ||retrieveUserType() === 'ADMIN'">
+      <a class="nav-link" routerLink="/view-employee-requests">
+        <h5 class="card-title">View Employee Requests</h5>
+      </a>
+    </li>
+    <li class="flex-item" *ngIf="retrieveUserType() === 'MANAGER' ||retrieveUserType() === 'ADMIN'">
+      <a class="nav-link" routerLink="/view-employees">
+        <h5 class="card-title" *ngIf="retrieveUserType() === 'MANAGER'">View your Employees</h5>
+        <h5 class="card-title" *ngIf="retrieveUserType() === 'ADMIN'">View your Users</h5>
+      </a>
+    </li>
+    <li class="flex-item"*ngIf="retrieveUserType() === 'MANAGER' ||retrieveUserType() === 'ADMIN'">
+      <a class="nav-link" routerLink="/create-new-user">
+        <h5 class="card-title" *ngIf="retrieveUserType() === 'MANAGER'">Create new Employee account</h5>
+        <h5 class="card-title" *ngIf="retrieveUserType() === 'ADMIN'">Create new User account</h5>
+      </a>
+    </li>
+    <li class="flex-item">
+      <a class="nav-link" routerLink="/edit-profile" (click)="logOut()">
+        <h5 class="card-title">Edit your Profile info</h5>
+      </a>
+    </li>
+    <li class="flex-item">
+      <a class="nav-link" routerLink="/">
+        <h5 class="card-title">Logout</h5>
+      </a>
+    </li>
+<!--      <li *ngIf="retrieveUserType() === 'MANAGER'" class="flex-item">3</li>-->
+<!--    </div>-->
+
+<!--    <div *ngIf="retrieveUserType() === 'MANAGER' || retrieveUserType() === 'ADMIN'">-->
+
+<!--    </div>-->
+
+  </ul>
+</div>
+

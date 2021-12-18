@@ -1,6 +1,5 @@
 <div class="card">
-  <div class="card-body">     <!-- this starts the body of the card -->
 <!--    <button *ngIf="!inHome" type="button" class="btn btn-primary" (click)="goHome()">Home</button>-->
-    <router-outlet></router-outlet>
-  </div>
+  <button *ngIf="!inHome" type="button" class="btn btn-primary" (click)="goHome()">Home</button>
+  <router-outlet></router-outlet>
 </div>
